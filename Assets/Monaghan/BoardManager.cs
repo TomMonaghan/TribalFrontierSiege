@@ -36,6 +36,19 @@ public class BoardManager : MonoBehaviour
                 Debug.DrawLine(start, start +heightLine);
             }
         }
+        
+        // Draw the selection
+        if (selectionX >= 0 && selectionY >= 0)
+        {
+            Debug.DrawLine(
+                Vector3.forward * selectionY + Vector3.right * selectionX,
+                Vector3.forward * (selectionY + 1) + Vector3.right * (selectionX + 1));
+            
+            Debug.DrawLine(
+                Vector3.forward * (selectionY + 1) + Vector3.right * selectionX,
+                Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
+                
+        }
 
        
     }
@@ -49,8 +62,17 @@ public class BoardManager : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f,
             LayerMask.GetMask("BoardPlane")))
         {
-            Debug.Log(hit.point);
+            selectionX = (int) hit.point.x;
+            selectionY = (int) hit.point.y;
+            Debug.Log("Testing raycast hit");
         }
+        else
+        {
+            selectionX = -1;
+            selectionY = -1;
+
+        }
+        
     }
 
 }
