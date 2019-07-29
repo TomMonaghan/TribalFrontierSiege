@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour
@@ -12,9 +13,17 @@ public class BoardManager : MonoBehaviour
     private int selectionY = -1;
     private int tileRowNumber = 6;
     private int tileColumnNumber = 4;
+    
     public float columnLineLength = 1.5f;
     public float rowLineLength = 1.5f;
     
+    public List<GameObject> basePrefabs;
+    private List<GameObject> activeBase = new List<GameObject>();
+
+    private void Start()
+    {
+        SpawnMainBase(0, CentreMainBase(3,0));
+    }
     private void Update()
     {
         UpdateSelection();
@@ -37,7 +46,7 @@ public class BoardManager : MonoBehaviour
             }
         }
         
-        // Draw the selection
+        //Puts the marker over which square the mouse is on
         if (selectionX >= 0 && selectionY >= 0)
         {
             Debug.DrawLine(
@@ -62,9 +71,10 @@ public class BoardManager : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f,
             LayerMask.GetMask("BoardPlane")))
         {
+            
             selectionX = (int) hit.point.x;
-            selectionY = (int) hit.point.y;
-            Debug.Log("Testing raycast hit");
+            selectionY = (int) hit.point.z;
+            Debug.Log(hit.point);
         }
         else
         {
@@ -75,4 +85,20 @@ public class BoardManager : MonoBehaviour
         
     }
 
+    private void SpawnMainBase(int index, Vector3 position)
+    {
+        GameObject go = Instantiate(basePrefabs [index], position, Quaternion.identity) as GameObject;
+        go.transform.SetParent(transform);
+        activeBase.Add(go);
+    }
+
+    private Vector3 CentreMainBase(int x, int y)
+    {
+        Vector3 origin = Vector3.zero;
+        origin.x += (tileSize * x) + tileOffset;
+        origin.y += (tileSize * y) + tileOffset;
+        return origin; 
+    }
+    
+   
 }
