@@ -11,18 +11,25 @@ public class BoardManager : MonoBehaviour
     //To keep track of which tile you're selecting so you know which tile you're hovering over
     private int selectionX = -1;
     private int selectionY = -1;
-    private int tileRowNumber = 6;
+    [SerializeField]
     private int tileColumnNumber = 4;
+    [SerializeField]
+    private int tileRowNumber = 6;
+  
+    public float columnLineLength = 2.0f;
+    public float rowLineLength = 4.5f;
+
+    public Vector3 widthLine;
+    public Vector3 heightLine;
     
-    public float columnLineLength = 1.5f;
-    public float rowLineLength = 1.5f;
+    
     
     public List<GameObject> basePrefabs;
     private List<GameObject> activeBase = new List<GameObject>();
 
     private void Start()
     {
-        SpawnMainBase(0, CentreMainBase(3,0));
+        //SpawnMainBase(0, CentreMainBase(0,0));
     }
     private void Update()
     {
@@ -38,15 +45,16 @@ public class BoardManager : MonoBehaviour
         for (int i = 0; i <= tileRowNumber; i++)
         {
             Vector3 start = Vector3.forward * i;
+            
             Debug.DrawLine(start, start + widthLine);
             for (int j = 0; j <= tileColumnNumber; j++)
             {
                 start = Vector3.right * j;
-                Debug.DrawLine(start, start +heightLine);
+                Debug.DrawLine(start, start + heightLine);
             }
         }
         
-        //Puts the marker over which square the mouse is on
+        //debug cross for where your mouse is
         if (selectionX >= 0 && selectionY >= 0)
         {
             Debug.DrawLine(
@@ -96,9 +104,40 @@ public class BoardManager : MonoBehaviour
     {
         Vector3 origin = Vector3.zero;
         origin.x += (tileSize * x) + tileOffset;
-        origin.y += (tileSize * y) + tileOffset;
+        origin.z += (tileSize * y) + tileOffset;
         return origin; 
     }
     
    
 }
+/*Haigens Way
+ *  private void DrawGameboard()
+    {
+         widthLine = (Vector3.right * tileRowNumber) * (rowLineLength / 3);
+         heightLine = (Vector3.forward * tileColumnNumber) * (columnLineLength / 3) ;
+
+        for (int i = 0 - (tileRowNumber / 2); i <= tileRowNumber / 2; i++)
+        {
+             start = (Vector3.forward - widthLine /i) *i ;
+            
+            Debug.DrawLine(start, start + widthLine);
+            for (int j = 0 - (tileColumnNumber / 2); j <= tileColumnNumber / 2; j++)
+            {
+                start = Vector3.right * j;
+                Debug.DrawLine(start, start + heightLine);
+            }
+        }
+        
+        //Puts the marker over which square the mouse is on
+        if (selectionX >= 0 && selectionY >= 0)
+        {
+            Debug.DrawLine(
+                Vector3.forward * selectionY + Vector3.right * selectionX,
+                Vector3.forward * (selectionY + 1) + Vector3.right * (selectionX + 1));
+            
+            Debug.DrawLine(
+                Vector3.forward * (selectionY + 1) + Vector3.right * selectionX,
+                Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
+                
+        }
+ */

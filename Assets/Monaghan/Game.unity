@@ -508,13 +508,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224061552}
-  m_LocalRotation: {x: 0.5000002, y: 0.49999982, z: -0.49999982, w: 0.5000003}
-  m_LocalPosition: {x: 2, y: 5.5, z: 3}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 3, y: 5.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!1 &1464968081
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,8 +542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464968081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 0.69, z: -10.84}
-  m_LocalScale: {x: 0.4, y: 1, z: 0.6}
+  m_LocalPosition: {x: 3, y: 0, z: 2}
+  m_LocalScale: {x: 0.6, y: 1, z: 0.4}
   m_Children: []
   m_Father: {fileID: 2080799033}
   m_RootOrder: 0
@@ -852,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080799032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8045635, y: -0.72, z: 13.835643}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1464968082}
@@ -871,8 +871,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ad6c463a2542740b887ee9b34508ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columnLineLength: 4.5
-  rowLineLength: 2
+  tileColumnNumber: 6
+  tileRowNumber: 4
+  columnLineLength: 2
+  rowLineLength: 4.5
+  widthLine: {x: 0, y: 0, z: 0}
+  heightLine: {x: 0, y: 0, z: 0}
   basePrefabs:
   - {fileID: 88151358}
   - {fileID: 0}
