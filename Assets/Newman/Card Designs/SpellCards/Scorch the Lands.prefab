@@ -216,6 +216,8 @@ GameObject:
   - component: {fileID: 4101968457313457123}
   - component: {fileID: 4101968457313457120}
   - component: {fileID: 7861906107575454572}
+  - component: {fileID: 5097715804407365498}
+  - component: {fileID: 2327422897163372459}
   m_Layer: 0
   m_Name: Scorch the Lands
   m_TagString: Untagged
@@ -323,6 +325,31 @@ MonoBehaviour:
   cardTypeText: {fileID: 2868270663491147607}
   goldCostText: {fileID: 4292402058962484498}
   techCostText: {fileID: 4493506271163593632}
+--- !u!114 &5097715804407365498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101968457313457121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2327422897163372459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101968457313457121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4326569969246820179
 GameObject:
   m_ObjectHideFlags: 0

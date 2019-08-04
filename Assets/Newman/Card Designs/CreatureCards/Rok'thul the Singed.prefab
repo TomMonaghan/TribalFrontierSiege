@@ -1646,6 +1646,7 @@ GameObject:
   - component: {fileID: 8071685787944711122}
   - component: {fileID: 8071685787944711121}
   - component: {fileID: 7998177401222502401}
+  - component: {fileID: 8386015760800754510}
   m_Layer: 0
   m_Name: Rok'thul the Singed
   m_TagString: Untagged
@@ -1757,6 +1758,19 @@ MonoBehaviour:
   techCostText: {fileID: 8553841766342054801}
   attackText: {fileID: 1109771543081618331}
   healthText: {fileID: 7477915259651910644}
+--- !u!65 &8386015760800754510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071685787944711120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8422414750789515106
 GameObject:
   m_ObjectHideFlags: 0

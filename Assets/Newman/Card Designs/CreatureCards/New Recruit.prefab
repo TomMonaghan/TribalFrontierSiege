@@ -420,6 +420,8 @@ GameObject:
   - component: {fileID: 4255461482302650461}
   - component: {fileID: 4255461482302650462}
   - component: {fileID: 2735152989264040846}
+  - component: {fileID: -6931418109840532201}
+  - component: {fileID: -8729141863519650313}
   m_Layer: 0
   m_Name: New Recruit
   m_TagString: Untagged
@@ -531,6 +533,31 @@ MonoBehaviour:
   techCostText: {fileID: 4449368530021062686}
   attackText: {fileID: 4930526283809767444}
   healthText: {fileID: 3228210744550269051}
+--- !u!114 &-6931418109840532201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255461482302650463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-8729141863519650313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255461482302650463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4605037585462689005
 GameObject:
   m_ObjectHideFlags: 0

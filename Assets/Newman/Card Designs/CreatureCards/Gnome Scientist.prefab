@@ -420,6 +420,8 @@ GameObject:
   - component: {fileID: 3474571266427839194}
   - component: {fileID: 3474571266427839193}
   - component: {fileID: 3369660801808468233}
+  - component: {fileID: -1323421974597183466}
+  - component: {fileID: 1233339799389202751}
   m_Layer: 0
   m_Name: Gnome Scientist
   m_TagString: Untagged
@@ -531,6 +533,31 @@ MonoBehaviour:
   techCostText: {fileID: 3929692598876324505}
   attackText: {fileID: 5718155405914348179}
   healthText: {fileID: 2880807403957320444}
+--- !u!114 &-1323421974597183466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474571266427839192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1233339799389202751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474571266427839192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3809524986124117610
 GameObject:
   m_ObjectHideFlags: 0

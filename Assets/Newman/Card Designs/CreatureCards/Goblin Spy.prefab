@@ -420,6 +420,8 @@ GameObject:
   - component: {fileID: 2883036874864290002}
   - component: {fileID: 2883036874864290001}
   - component: {fileID: 3961410988649775873}
+  - component: {fileID: 601360670550238627}
+  - component: {fileID: 154211868303340672}
   m_Layer: 0
   m_Name: Goblin Spy
   m_TagString: Untagged
@@ -531,6 +533,31 @@ MonoBehaviour:
   techCostText: {fileID: 3365209758231939217}
   attackText: {fileID: 6296114607389380763}
   healthText: {fileID: 4593704576169177332}
+--- !u!114 &601360670550238627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883036874864290000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &154211868303340672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883036874864290000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3234873304673266786
 GameObject:
   m_ObjectHideFlags: 0

@@ -624,6 +624,8 @@ GameObject:
   - component: {fileID: 4029759630963022812}
   - component: {fileID: 4029759630963022815}
   - component: {fileID: 2961061253930119183}
+  - component: {fileID: 1299557943776489295}
+  - component: {fileID: -4222295785948317580}
   m_Layer: 0
   m_Name: Protector of the Forest
   m_TagString: Untagged
@@ -735,6 +737,31 @@ MonoBehaviour:
   techCostText: {fileID: 3557192493813873567}
   attackText: {fileID: 5228192270220944277}
   healthText: {fileID: 2318810867804111866}
+--- !u!114 &1299557943776489295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029759630963022814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-4222295785948317580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029759630963022814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5229916711333520558
 GameObject:
   m_ObjectHideFlags: 0

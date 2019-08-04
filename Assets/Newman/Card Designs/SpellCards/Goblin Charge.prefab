@@ -420,6 +420,8 @@ GameObject:
   - component: {fileID: 3948783617337206959}
   - component: {fileID: 3948783617337206956}
   - component: {fileID: 7150276536095010848}
+  - component: {fileID: -6946423797287696507}
+  - component: {fileID: -1576928545055392809}
   m_Layer: 0
   m_Name: Goblin Charge
   m_TagString: Untagged
@@ -527,6 +529,31 @@ MonoBehaviour:
   cardTypeText: {fileID: 3021879803429186587}
   goldCostText: {fileID: 3868688550679512670}
   techCostText: {fileID: 3494194584025598188}
+--- !u!114 &-6946423797287696507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948783617337206957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-1576928545055392809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948783617337206957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5951238474802365404
 GameObject:
   m_ObjectHideFlags: 0

@@ -1238,6 +1238,7 @@ GameObject:
   - component: {fileID: 4679283667041778671}
   - component: {fileID: 4679283667041778668}
   - component: {fileID: 6776649947268780092}
+  - component: {fileID: 2412973265292604950}
   m_Layer: 0
   m_Name: Avatar Aeceran
   m_TagString: Untagged
@@ -1349,6 +1350,19 @@ MonoBehaviour:
   techCostText: {fileID: 5062359364593736620}
   attackText: {fileID: 4580996002248065958}
   healthText: {fileID: 6283260963765019593}
+--- !u!65 &2412973265292604950
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679283667041778669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4906154297229393759
 GameObject:
   m_ObjectHideFlags: 0

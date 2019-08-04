@@ -1442,6 +1442,8 @@ GameObject:
   - component: {fileID: 6333950042850324509}
   - component: {fileID: 6333950042850324510}
   - component: {fileID: 5268629425670724558}
+  - component: {fileID: -6901616273973853333}
+  - component: {fileID: 356588046316582184}
   m_Layer: 0
   m_Name: Goblin Assassing
   m_TagString: Untagged
@@ -1553,6 +1555,31 @@ MonoBehaviour:
   techCostText: {fileID: 5861308127917199454}
   attackText: {fileID: 2919570757193107540}
   healthText: {fileID: 4621873247601616955}
+--- !u!114 &-6901616273973853333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333950042850324511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &356588046316582184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333950042850324511}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7645101921405477227
 GameObject:
   m_ObjectHideFlags: 0

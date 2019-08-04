@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 2141135916773385848}
   - component: {fileID: 2141135916773385851}
   - component: {fileID: 238003897480007083}
+  - component: {fileID: 1268305049946422022}
   m_Layer: 0
   m_Name: Ork Leader Dakrakk
   m_TagString: Untagged
@@ -327,6 +328,19 @@ MonoBehaviour:
   techCostText: {fileID: 1947786450320688699}
   attackText: {fileID: 7121325596968181297}
   healthText: {fileID: 753316097551154782}
+--- !u!65 &1268305049946422022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141135916773385850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2326314222821439246
 GameObject:
   m_ObjectHideFlags: 0

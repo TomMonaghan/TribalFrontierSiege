@@ -1442,6 +1442,8 @@ GameObject:
   - component: {fileID: 6309809464014139957}
   - component: {fileID: 6309809464014139958}
   - component: {fileID: 5290509979715508710}
+  - component: {fileID: 6847807742257817087}
+  - component: {fileID: -3415303790175516049}
   m_Layer: 0
   m_Name: Knight of the Five Tribes
   m_TagString: Untagged
@@ -1553,6 +1555,31 @@ MonoBehaviour:
   techCostText: {fileID: 5846174757107618422}
   attackText: {fileID: 2950458523483441788}
   healthText: {fileID: 4634896144905857555}
+--- !u!114 &6847807742257817087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309809464014139959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-3415303790175516049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309809464014139959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7669243097168716611
 GameObject:
   m_ObjectHideFlags: 0
