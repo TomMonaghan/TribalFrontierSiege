@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
-   
-    private const float tileSize = 2.0f;
-    private const float tileOffset = 1.0f;
+    public CreatureCard[,] CreatureCards { set; get;}
+    private CreatureCard selectedCreatureCard; 
+    
+    private const float tileSize = 1.0f;
+    private const float tileOffset = 0.5f;
+    private const float heightOffset = 0.0f;
+
     //To keep track of which tile you're selecting so you know which tile you're hovering over
     private int selectionX = -1;
     private int selectionY = -1;
@@ -24,12 +28,14 @@ public class BoardManager : MonoBehaviour
     
     
     
-    public List<GameObject> basePrefabs;
-    private List<GameObject> activeBase = new List<GameObject>();
+    public List<GameObject> objectPrefabs;
+    private List<GameObject> activeObject = new List<GameObject>();
+    //Which way the objects are facing in the SpawnBasesOnBoard function
+    private Quaternion orientation = Quaternion.Euler(0, 0, 0);
 
     private void Start()
     {
-        //SpawnMainBase(0, CentreMainBase(0,0));
+        SpawnMainBases();
     }
     private void Update()
     {
@@ -93,51 +99,36 @@ public class BoardManager : MonoBehaviour
         
     }
 
-    private void SpawnMainBase(int index, Vector3 position)
-    {
-        GameObject go = Instantiate(basePrefabs [index], position, Quaternion.identity) as GameObject;
-        go.transform.SetParent(transform);
-        activeBase.Add(go);
-    }
-
-    private Vector3 CentreMainBase(int x, int y)
+    private void SpawnBasesOnBoard(int index, int x, int y, int z) 
+         {
+             GameObject go = Instantiate(objectPrefabs [index], GetTileCentre(x, y, z), orientation) as GameObject;
+             go.transform.SetParent(transform);
+             
+             activeObject.Add(go);
+         }
+    
+    //work on creatures being able to be spawned and moved
+    
+    private Vector3 GetTileCentre(int x, int y, int z)
     {
         Vector3 origin = Vector3.zero;
-        origin.x += (tileSize * x) + tileOffset;
+        origin.x += (tileSize * x);
         origin.z += (tileSize * y) + tileOffset;
+        origin.y += (tileSize * z);
         return origin; 
     }
-    
+
+    private void SpawnCreatureCard()
+    {
+        activeObject = new List<GameObject>();
+        CreatureCards = new CreatureCard[6, 4];
+        SpawnBasesOnBoard(0,7/2, 0, 1/8);
+        SpawnBasesOnBoard(1, 7/2, 7/2, 1/8);
+    }
+    private void SpawnMainBases()
+    {
+        SpawnBasesOnBoard(0,7/2, 0, 1/8);
+        SpawnBasesOnBoard(1, 7/2, 7/2, 1/8);
+    }
    
 }
-/*Haigens Way
- *  private void DrawGameboard()
-    {
-         widthLine = (Vector3.right * tileRowNumber) * (rowLineLength / 3);
-         heightLine = (Vector3.forward * tileColumnNumber) * (columnLineLength / 3) ;
-
-        for (int i = 0 - (tileRowNumber / 2); i <= tileRowNumber / 2; i++)
-        {
-             start = (Vector3.forward - widthLine /i) *i ;
-            
-            Debug.DrawLine(start, start + widthLine);
-            for (int j = 0 - (tileColumnNumber / 2); j <= tileColumnNumber / 2; j++)
-            {
-                start = Vector3.right * j;
-                Debug.DrawLine(start, start + heightLine);
-            }
-        }
-        
-        //Puts the marker over which square the mouse is on
-        if (selectionX >= 0 && selectionY >= 0)
-        {
-            Debug.DrawLine(
-                Vector3.forward * selectionY + Vector3.right * selectionX,
-                Vector3.forward * (selectionY + 1) + Vector3.right * (selectionX + 1));
-            
-            Debug.DrawLine(
-                Vector3.forward * (selectionY + 1) + Vector3.right * selectionX,
-                Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
-                
-        }
- */

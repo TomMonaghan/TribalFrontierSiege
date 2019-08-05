@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinSpy : CreaturesCard
+public class GoblinSpy : CreatureCard
 {
 
 }
