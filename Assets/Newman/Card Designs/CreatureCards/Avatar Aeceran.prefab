@@ -1239,6 +1239,7 @@ GameObject:
   - component: {fileID: 4679283667041778668}
   - component: {fileID: 6776649947268780092}
   - component: {fileID: 2412973265292604950}
+  - component: {fileID: 8665671476262340092}
   m_Layer: 0
   m_Name: Avatar Aeceran
   m_TagString: Untagged
@@ -1255,7 +1256,7 @@ RectTransform:
   m_GameObject: {fileID: 4679283667041778669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children:
   - {fileID: 4179903489625198365}
   - {fileID: 4494283993491131147}
@@ -1363,6 +1364,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8665671476262340092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679283667041778669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4906154297229393759
 GameObject:
   m_ObjectHideFlags: 0

@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 2141135916773385851}
   - component: {fileID: 238003897480007083}
   - component: {fileID: 1268305049946422022}
+  - component: {fileID: 296677899240034042}
   m_Layer: 0
   m_Name: Ork Leader Dakrakk
   m_TagString: Untagged
@@ -233,7 +234,7 @@ RectTransform:
   m_GameObject: {fileID: 2141135916773385850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children:
   - {fileID: 7441336789242139274}
   - {fileID: 7140482546711074460}
@@ -341,6 +342,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &296677899240034042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141135916773385850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc2b160a69934540bda168ef7347ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2326314222821439246
 GameObject:
   m_ObjectHideFlags: 0

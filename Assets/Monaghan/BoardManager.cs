@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
-    public CreatureCard[,] CreatureCards { set; get;}
-    private CreatureCard selectedCreatureCard; 
+    public CardBase[,] Cards { set; get;}
+    private CardBase selectedCard; 
     
     private const float tileSize = 1.0f;
     private const float tileOffset = 0.5f;
@@ -19,6 +19,9 @@ public class BoardManager : MonoBehaviour
     private int tileColumnNumber = 4;
     [SerializeField]
     private int tileRowNumber = 6;
+    private int deckSize = 25;
+    private int startingHandSize = 4;
+    private int theCount = 0;
   
     public float columnLineLength = 2.0f;
     public float rowLineLength = 4.5f;
@@ -29,20 +32,60 @@ public class BoardManager : MonoBehaviour
     
     
     public List<GameObject> objectPrefabs;
+    public List<GameObject> cardPrefabs;
     private List<GameObject> activeObject = new List<GameObject>();
+    private List<GameObject> activeCard = new List<GameObject>();
+
     //Which way the objects are facing in the SpawnBasesOnBoard function
-    private Quaternion orientation = Quaternion.Euler(0, 0, 0);
+    private Quaternion faceUpCardOrientation = Quaternion.Euler(90, 0, 0);
+    private Quaternion faceDownCardOrientation = Quaternion.Euler(90,180 , 180);
+
+    private Quaternion baseOrientation = Quaternion.Euler(0, 0, 0);
+
+
+    public bool isPlayerOneTurn = true;
+    
 
     private void Start()
     {
         SpawnMainBases();
+        SpawnCard();
+        SpawnDeck();
+        SpawnStartingHand();
     }
     private void Update()
     {
         UpdateSelection();
         DrawGameboard();
+
+        if (Input.GetMouseButton(0))
+        {
+            if (selectionX >= 0 && selectionY >= 0)
+            {
+                if (selectedCard == null)
+                {
+                    //select the card
+                }
+                else
+                {
+                    //Move the card
+                }
+            }
+        }
     }
 
+    private void SelectCard(int x, int y)
+    {
+        if (Cards[x, y] == null)
+            return;
+        
+//        if(Cards[x, y]).isPlayerOne != isPlayerOneTurn)
+    }
+
+    private void MoveCard(int x, int y)
+    {
+        
+    }
     private void DrawGameboard()
     {
         Vector3 widthLine = (Vector3.right * tileRowNumber) * (rowLineLength / 3);
@@ -101,15 +144,22 @@ public class BoardManager : MonoBehaviour
 
     private void SpawnBasesOnBoard(int index, int x, int y, int z) 
          {
-             GameObject go = Instantiate(objectPrefabs [index], GetTileCentre(x, y, z), orientation) as GameObject;
+             GameObject go = Instantiate(objectPrefabs [index], GetTileLine(x, y, z), baseOrientation) as GameObject;
              go.transform.SetParent(transform);
-             
+             //Cards[x, y] = go.GetComponent<CardBase>();
              activeObject.Add(go);
          }
     
-    //work on creatures being able to be spawned and moved
+    private void SpawnCardsOnBoard(int index, int x, int y, int z) 
+    {
+        GameObject go = Instantiate(cardPrefabs [index], GetTileCentre(x, y, z), faceUpCardOrientation) as GameObject;
+        go.transform.SetParent(transform);
+        activeCard.Add(go);
+    }
     
-    private Vector3 GetTileCentre(int x, int y, int z)
+    
+    
+    private Vector3 GetTileLine(int x, int y, int z)
     {
         Vector3 origin = Vector3.zero;
         origin.x += (tileSize * x);
@@ -118,17 +168,40 @@ public class BoardManager : MonoBehaviour
         return origin; 
     }
 
-    private void SpawnCreatureCard()
+    private Vector3 GetTileCentre(int x, int y, int z)
     {
-        activeObject = new List<GameObject>();
-        CreatureCards = new CreatureCard[6, 4];
-        SpawnBasesOnBoard(0,7/2, 0, 1/8);
-        SpawnBasesOnBoard(1, 7/2, 7/2, 1/8);
+        Vector3 origin = Vector3.zero;
+        origin.x += (tileSize * x) + tileOffset;
+        origin.z += (tileSize * y) + tileOffset;
+        origin.y += (tileSize * z);
+        return origin; 
+    }
+    private void SpawnCard()
+    {
+        SpawnCardsOnBoard(0, 0, 1, 1/8);
     }
     private void SpawnMainBases()
     {
         SpawnBasesOnBoard(0,7/2, 0, 1/8);
         SpawnBasesOnBoard(1, 7/2, 7/2, 1/8);
+
+    }
+    
+    private void SpawnDeck()
+    {
+        for (theCount = 0; theCount < deckSize - startingHandSize; theCount++)
+        {
+            SpawnCardsOnBoard(theCount + startingHandSize, 6, 0, 1/8);
+        }
+        
     }
    
+    private void SpawnStartingHand()
+    {
+        for (theCount = 0; theCount < startingHandSize; theCount++)
+        {
+            SpawnCardsOnBoard(theCount, 1 + (theCount) , -1, 1/8);
+            
+        }    
+    }
 }
