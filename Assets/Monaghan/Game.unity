@@ -390,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileColumnNumber: 6
   tileRowNumber: 4
+  startingHandSize: 4
   columnLineLength: 2
   rowLineLength: 4.5
   widthLine: {x: 0, y: 0, z: 0}

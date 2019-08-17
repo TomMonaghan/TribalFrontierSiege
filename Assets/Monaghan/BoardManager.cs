@@ -20,6 +20,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]
     private int tileRowNumber = 6;
     private int deckSize = 25;
+    [SerializeField]
     private int startingHandSize = 4;
     private int theCount = 0;
   
@@ -182,8 +183,8 @@ public class BoardManager : MonoBehaviour
     }
     private void SpawnMainBases()
     {
-        SpawnBasesOnBoard(0,7/2, 0, 1/8);
-        SpawnBasesOnBoard(1, 7/2, 7/2, 1/8);
+        SpawnBasesOnBoard(0,3, 0, 1/8);
+        SpawnBasesOnBoard(1, 3, 3, 1/8);
 
     }
     
@@ -200,7 +201,7 @@ public class BoardManager : MonoBehaviour
     {
         for (theCount = 0; theCount < startingHandSize; theCount++)
         {
-            SpawnCardsOnBoard(theCount, 1 + (theCount) , -1, 1/8);
+            SpawnCardsOnBoard(theCount, 0 + (theCount) , -1, 1/8);
             
         }    
     }
