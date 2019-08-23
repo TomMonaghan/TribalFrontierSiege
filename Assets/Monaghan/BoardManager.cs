@@ -19,6 +19,7 @@ public class BoardManager : MonoBehaviour
     private int tileColumnNumber = 4;
     [SerializeField]
     private int tileRowNumber = 6;
+    [SerializeField]
     private int deckSize = 25;
     [SerializeField]
     private int startingHandSize = 4;
@@ -151,12 +152,7 @@ public class BoardManager : MonoBehaviour
              activeObject.Add(go);
          }
     
-    private void SpawnCardsOnBoard(int index, int x, int y, int z) 
-    {
-        GameObject go = Instantiate(cardPrefabs [index], GetTileCentre(x, y, z), faceUpCardOrientation) as GameObject;
-        go.transform.SetParent(transform);
-        activeCard.Add(go);
-    }
+    
     
     
     
@@ -167,6 +163,13 @@ public class BoardManager : MonoBehaviour
         origin.z += (tileSize * y) + tileOffset;
         origin.y += (tileSize * z);
         return origin; 
+    }
+    
+    private void SpawnCardsOnBoard(int index, int x, int y, int z) 
+    {
+        GameObject go = Instantiate(cardPrefabs [index], GetTileCentre(x, y, z), faceUpCardOrientation) as GameObject;
+        go.transform.SetParent(transform);
+        activeCard.Add(go);
     }
 
     private Vector3 GetTileCentre(int x, int y, int z)
@@ -204,5 +207,19 @@ public class BoardManager : MonoBehaviour
             SpawnCardsOnBoard(theCount, 0 + (theCount) , -1, 1/8);
             
         }    
+    }
+
+    public class BaseHealth
+    {
+        public int CalculateBaseHealth(int baseUpgrades, int damageTaken, int baseHealing)
+        {
+            int health = 20;
+
+            health += baseUpgrades * 5;
+            health += baseHealing;
+            health -= damageTaken;
+
+            return health;
+        }
     }
 }
