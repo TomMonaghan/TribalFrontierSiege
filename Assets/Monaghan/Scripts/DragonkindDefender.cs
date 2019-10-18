@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellsCard : CardBase
+public class DragonkindDefender : PlayerBase
 {
     
 }

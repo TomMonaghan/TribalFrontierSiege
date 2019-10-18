@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
-    public CardBase[,] Cards { set; get;}
-    private CardBase selectedCard; 
+    public PlayerBase[,] Cards { set; get;}
+    private PlayerBase selectedCard; 
     
     private const float tileSize = 1.0f;
     private const float tileOffset = 0.5f;
@@ -23,25 +23,20 @@ public class BoardManager : MonoBehaviour
     private int deckSize = 25;
     [SerializeField]
     private int startingHandSize = 4;
-    private int theCount = 0;
-  
+    private int i = 0;
     public float columnLineLength = 2.0f;
     public float rowLineLength = 4.5f;
-
     public Vector3 widthLine;
     public Vector3 heightLine;
-    
-    
-    
     public List<GameObject> objectPrefabs;
-    public List<GameObject> cardPrefabs;
+    public List<GameObject> playerOneCardPrefabs;
+    public List<GameObject> playerTwoCardPrefabs;
     private List<GameObject> activeObject = new List<GameObject>();
     private List<GameObject> activeCard = new List<GameObject>();
-
     //Which way the objects are facing in the SpawnBasesOnBoard function
-    private Quaternion faceUpCardOrientation = Quaternion.Euler(90, 0, 0);
-    private Quaternion faceDownCardOrientation = Quaternion.Euler(90,180 , 180);
-
+    private Quaternion YourCardsFaceUpCardOrientation = Quaternion.Euler(90, 0, 0);
+    private Quaternion EnemyCardsFaceUpCardOrientation = Quaternion.Euler(90, 180, 0);
+    private Quaternion YourCardsFaceDownCardOrientation = Quaternion.Euler(90,180 , 180);
     private Quaternion baseOrientation = Quaternion.Euler(0, 0, 0);
 
 
@@ -52,8 +47,10 @@ public class BoardManager : MonoBehaviour
     {
         SpawnMainBases();
         SpawnCard();
-        SpawnDeck();
-        SpawnStartingHand();
+        SpawnPlayerOneDeck();
+        SpawnPlayerOneStartingHand();
+        SpawnPlayerTwoDeck();
+        SpawnPlayerTwoStartingHand();
     }
     private void Update()
     {
@@ -148,7 +145,7 @@ public class BoardManager : MonoBehaviour
          {
              GameObject go = Instantiate(objectPrefabs [index], GetTileLine(x, y, z), baseOrientation) as GameObject;
              go.transform.SetParent(transform);
-             //Cards[x, y] = go.GetComponent<CardBase>();
+             //Cards[x, y] = go.GetComponent<PlayerBase>();
              activeObject.Add(go);
          }
     
@@ -165,12 +162,7 @@ public class BoardManager : MonoBehaviour
         return origin; 
     }
     
-    private void SpawnCardsOnBoard(int index, int x, int y, int z) 
-    {
-        GameObject go = Instantiate(cardPrefabs [index], GetTileCentre(x, y, z), faceUpCardOrientation) as GameObject;
-        go.transform.SetParent(transform);
-        activeCard.Add(go);
-    }
+   
 
     private Vector3 GetTileCentre(int x, int y, int z)
     {
@@ -182,7 +174,7 @@ public class BoardManager : MonoBehaviour
     }
     private void SpawnCard()
     {
-        SpawnCardsOnBoard(0, 0, 1, 1/8);
+        //SpawnPlayerOneCardsOnBoard(0, 0, 1, 1/8);
     }
     private void SpawnMainBases()
     {
@@ -191,24 +183,60 @@ public class BoardManager : MonoBehaviour
 
     }
     
-    private void SpawnDeck()
+    private void SpawnPlayerOneCardsOnBoard(int index, int x, int y, int z) 
     {
-        for (theCount = 0; theCount < deckSize - startingHandSize; theCount++)
+        GameObject go = Instantiate(playerOneCardPrefabs [index], GetTileCentre(x, y, z), YourCardsFaceUpCardOrientation) as GameObject;
+        go.transform.SetParent(transform);
+        //Cards[x, y] = go.GetComponent<PlayerBase>();
+        activeCard.Add(go);
+    }
+    
+    private void SpawnPlayerTwoCardsOnBoard(int index, int x, int y, int z) 
+    {
+        GameObject go = Instantiate(playerTwoCardPrefabs [index], GetTileCentre(x, y, z), EnemyCardsFaceUpCardOrientation) as GameObject;
+        go.transform.SetParent(transform);
+        activeCard.Add(go);
+    }
+    
+    private void SpawnPlayerOneDeck()
+    {
+        for (i = 0; i < deckSize - startingHandSize; i++)
         {
-            SpawnCardsOnBoard(theCount + startingHandSize, 6, 0, 1/8);
+            SpawnPlayerOneCardsOnBoard(i + startingHandSize, 6, 0, 1/8);
+        }
+        
+    }
+    
+    private void SpawnPlayerTwoDeck()
+    {
+        for (i = 0; i < deckSize - startingHandSize; i++)
+        {
+            SpawnPlayerTwoCardsOnBoard(i + startingHandSize, -1, 3, 1/8);
         }
         
     }
    
-    private void SpawnStartingHand()
+    private void SpawnPlayerOneStartingHand()
     {
-        for (theCount = 0; theCount < startingHandSize; theCount++)
+        for (i = 0; i < startingHandSize; i++)
         {
-            SpawnCardsOnBoard(theCount, 0 + (theCount) , -1, 1/8);
+            SpawnPlayerOneCardsOnBoard(i, 0 + (i) , -1, 1/8);
             
         }    
     }
+    
+    private void SpawnPlayerTwoStartingHand()
+    {
+        for (i = 0; i < startingHandSize; i++)
+        {
+            SpawnPlayerTwoCardsOnBoard(i, 2 + (i) , 4, 1/8);
+            
+        }    
+    }
+    
+    
 
+    /*
     public class BaseHealth
     {
         public int CalculateBaseHealth(int baseUpgrades, int damageTaken, int baseHealing)
@@ -221,5 +249,5 @@ public class BoardManager : MonoBehaviour
 
             return health;
         }
-    }
+    }*/
 }

@@ -1439,13 +1439,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333950042850324508}
+  - component: {fileID: -3738051642009214682}
   - component: {fileID: 6333950042850324509}
   - component: {fileID: 6333950042850324510}
   - component: {fileID: 5268629425670724558}
   - component: {fileID: -6901616273973853333}
   - component: {fileID: 356588046316582184}
   m_Layer: 0
-  m_Name: Goblin Assassing
+  m_Name: Goblin Assassin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1479,6 +1480,19 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 3}
   m_SizeDelta: {x: 2, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-3738051642009214682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333950042850324511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0de7e917bbbbe4eaac255274842113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerOne: 0
 --- !u!212 &6333950042850324509
 SpriteRenderer:
   m_ObjectHideFlags: 0
