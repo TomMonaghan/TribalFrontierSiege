@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41a0552bb940344d9d315841dda41d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer: {fileID: 0}
 --- !u!114 &1224061557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,23 +538,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerOneCardPrefabs:
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
+  - {fileID: 4679283667041778669, guid: bbf44150de94ba4439a91c9e371c61ab, type: 3}
   - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
   - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
-  - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
-  - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
+  - {fileID: 8908808271617950779, guid: 485d0d4c93345e743b84d2e0e10be383, type: 3}
+  - {fileID: 9189242896819791566, guid: 3a9ba0f73d8d7ec42b9cde82b7e7826d, type: 3}
+  - {fileID: 8137699991520309033, guid: b19e4a86a7455094291164b53355807c, type: 3}
+  - {fileID: 4001544906603545572, guid: d129f4af7ba3afd45a734028ec10c344, type: 3}
+  - {fileID: 3474571266427839192, guid: 27b8ee0fd69c09248838d0b85d9d949e, type: 3}
+  - {fileID: 6333950042850324511, guid: c9c85548a555d024c808e1ba98aaf44f, type: 3}
+  - {fileID: 2883036874864290000, guid: 1bef2cadb09a01a4c84aeca6a7c717be, type: 3}
+  - {fileID: 6309809464014139959, guid: ca320290998f61d4e867e92ff60f94a7, type: 3}
+  - {fileID: 442842308163080198, guid: 95b2272e3787b394894a1eb72800884a, type: 3}
+  - {fileID: 5449197741451860811, guid: 8afa669bb8598ee43a00d2e01863c634, type: 3}
+  - {fileID: 6041149479916633378, guid: cd22e5bf9bc5fb4428954cb76cc92eea, type: 3}
+  - {fileID: 2141135916773385850, guid: c1ff8acb238b94347b8aae29268e862a, type: 3}
+  - {fileID: 4029759630963022814, guid: 4cd2000af46791a4fb599091d2053694, type: 3}
+  - {fileID: 8071685787944711120, guid: aa1eb6fa9f5f6e543b6c550484feefe6, type: 3}
   - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
   - {fileID: 1678710228101127300, guid: 80f9114a04939604db78b59ff36c3fd0, type: 3}
   - {fileID: 4945035985836488718, guid: a1f18744ab1a56e4ea6c12b90273133f, type: 3}
@@ -598,6 +599,10 @@ MonoBehaviour:
   - {fileID: 2141135916773385850, guid: c1ff8acb238b94347b8aae29268e862a, type: 3}
   - {fileID: 6041149479916633378, guid: cd22e5bf9bc5fb4428954cb76cc92eea, type: 3}
   - {fileID: 2141135916773385850, guid: c1ff8acb238b94347b8aae29268e862a, type: 3}
+  playerOneHand: []
+  playerTwoHand: []
+  playerOneInPlay: []
+  playerTwoInPlay: []
   isPlayerOneTurn: 1
 --- !u!1 &2146541747
 GameObject:

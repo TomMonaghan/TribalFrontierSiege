@@ -31,6 +31,10 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> objectPrefabs;
     public List<GameObject> playerOneCardPrefabs;
     public List<GameObject> playerTwoCardPrefabs;
+    public List<GameObject> playerOneHand;
+    public List<GameObject> playerTwoHand;
+    public List<GameObject> playerOneInPlay;
+    public List<GameObject> playerTwoInPlay;
     private List<GameObject> activeObject = new List<GameObject>();
     private List<GameObject> activeCard = new List<GameObject>();
     //Which way the objects are facing in the SpawnBasesOnBoard function
@@ -46,11 +50,14 @@ public class BoardManager : MonoBehaviour
     private void Start()
     {
         SpawnMainBases();
-        SpawnCard();
+        //SpawnCard();
         SpawnPlayerOneDeck();
+        PlayerOneDrawCard(startingHandSize);
+        PlayerTwoDrawCard(startingHandSize);
         SpawnPlayerOneStartingHand();
         SpawnPlayerTwoDeck();
         SpawnPlayerTwoStartingHand();
+        
     }
     private void Update()
     {
@@ -172,10 +179,7 @@ public class BoardManager : MonoBehaviour
         origin.y += (tileSize * z);
         return origin; 
     }
-    private void SpawnCard()
-    {
-        //SpawnPlayerOneCardsOnBoard(0, 0, 1, 1/8);
-    }
+    
     private void SpawnMainBases()
     {
         SpawnBasesOnBoard(0,3, 0, 1/8);
@@ -183,12 +187,18 @@ public class BoardManager : MonoBehaviour
 
     }
     
+    //Harry's time saver
+    private void SpawnCard(List<GameObject> cardList, int index, int x, int y, int z)
+    {
+        GameObject go = Instantiate(cardList[index], GetTileCentre(x, y, z), YourCardsFaceUpCardOrientation) as GameObject;
+        go.transform.SetParent(transform);
+    }
+    
     private void SpawnPlayerOneCardsOnBoard(int index, int x, int y, int z) 
     {
         GameObject go = Instantiate(playerOneCardPrefabs [index], GetTileCentre(x, y, z), YourCardsFaceUpCardOrientation) as GameObject;
         go.transform.SetParent(transform);
-        //Cards[x, y] = go.GetComponent<PlayerBase>();
-        activeCard.Add(go);
+        //change to 
     }
     
     private void SpawnPlayerTwoCardsOnBoard(int index, int x, int y, int z) 
@@ -220,8 +230,9 @@ public class BoardManager : MonoBehaviour
     {
         for (i = 0; i < startingHandSize; i++)
         {
-            SpawnPlayerOneCardsOnBoard(i, 0 + (i) , -1, 1/8);
-            
+            //SpawnPlayerOneCardsOnBoard(i, 0 + (i) , -1, 1/8);
+           SpawnCard(playerOneHand, i, 0 + (i), -1, 1/8);
+
         }    
     }
     
@@ -233,8 +244,35 @@ public class BoardManager : MonoBehaviour
             
         }    
     }
+
+    private void PlayerOneDrawCard(int i)
+    {
+ 
+        for (int j = 0; j < i; j++)
+        {
+            GameObject card = playerOneCardPrefabs[Random.Range(0, playerOneCardPrefabs.Count - 1)];
+
+            playerOneHand.Add(card);
+            playerOneCardPrefabs.Remove(card);
+        }
+
+    }
     
+    private void PlayerTwoDrawCard(int i)
+    {
+ 
+        for (int j = 0; j < i; j++)
+        {
+            GameObject card = playerTwoCardPrefabs[Random.Range(0, playerTwoCardPrefabs.Count - 1)];
+
+            playerTwoHand.Add(card);
+            playerTwoCardPrefabs.Remove(card);
+        }
+
+    }
+
     
+
 
     /*
     public class BaseHealth
