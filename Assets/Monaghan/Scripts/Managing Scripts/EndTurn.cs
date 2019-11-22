@@ -11,10 +11,14 @@ public class EndTurn : MonoBehaviour
         if (GameManager.Instance.isPlayerOneTurn)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            //PlayerTwoDrawCard
+            //turn number++
         }
         else
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
+            //PlayerOneDrawCard
+            //turn number++
         }
         
     }

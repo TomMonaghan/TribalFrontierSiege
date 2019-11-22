@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
@@ -23,7 +25,6 @@ public class BoardManager : MonoBehaviour
     private int deckSize = 25;
     [SerializeField]
     private int startingHandSize = 4;
-    private int i = 0;
     public float columnLineLength = 2.0f;
     public float rowLineLength = 4.5f;
     public Vector3 widthLine;
@@ -49,16 +50,27 @@ public class BoardManager : MonoBehaviour
 
     private void Start()
     {
+        DrawCardPlayerOne.OnButtonPush += PlayerOneDrawCard;
+        
         SpawnMainBases();
-        //SpawnCard();
+        //spawn deck lists and decks
         SpawnPlayerOneDeck();
+        SpawnPlayerTwoDeck();
+        //puut player one draw card into end turn and make it one instead of startinghandsize maybe need to include some kind of spawn as spawnplayeronestartinghand is needed here for the card objects
+        //these two below take the card from the deck list and add it to the hand list
         PlayerOneDrawCard(startingHandSize);
         PlayerTwoDrawCard(startingHandSize);
-        SpawnPlayerOneStartingHand();
-        SpawnPlayerTwoDeck();
-        SpawnPlayerTwoStartingHand();
+        //spawn the card objects into the hand
+        //    SpawnPlayerOneStartingHand();
+        //SpawnPlayerTwoStartingHand();
         
     }
+
+    private void OnDestroy()
+    {
+        DrawCardPlayerOne.OnButtonPush -= PlayerOneDrawCard;
+    }
+
     private void Update()
     {
         UpdateSelection();
@@ -156,10 +168,6 @@ public class BoardManager : MonoBehaviour
              activeObject.Add(go);
          }
     
-    
-    
-    
-    
     private Vector3 GetTileLine(int x, int y, int z)
     {
         Vector3 origin = Vector3.zero;
@@ -187,7 +195,7 @@ public class BoardManager : MonoBehaviour
 
     }
     
-    //Harry's time saver
+    
     private void SpawnCard(List<GameObject> cardList, int index, int x, int y, int z)
     {
         GameObject go = Instantiate(cardList[index], GetTileCentre(x, y, z), YourCardsFaceUpCardOrientation) as GameObject;
@@ -210,7 +218,7 @@ public class BoardManager : MonoBehaviour
     
     private void SpawnPlayerOneDeck()
     {
-        for (i = 0; i < deckSize - startingHandSize; i++)
+        for ( int i = 0; i < deckSize - startingHandSize; i++)
         {
             SpawnPlayerOneCardsOnBoard(i + startingHandSize, 6, 0, 1/8);
         }
@@ -219,7 +227,7 @@ public class BoardManager : MonoBehaviour
     
     private void SpawnPlayerTwoDeck()
     {
-        for (i = 0; i < deckSize - startingHandSize; i++)
+        for (int i = 0; i < deckSize - startingHandSize; i++)
         {
             SpawnPlayerTwoCardsOnBoard(i + startingHandSize, -1, 3, 1/8);
         }
@@ -228,24 +236,22 @@ public class BoardManager : MonoBehaviour
    
     private void SpawnPlayerOneStartingHand()
     {
-        for (i = 0; i < startingHandSize; i++)
+        for (int i = 0; i < startingHandSize; i++)
         {
-            //SpawnPlayerOneCardsOnBoard(i, 0 + (i) , -1, 1/8);
-           SpawnCard(playerOneHand, i, 0 + (i), -1, 1/8);
-
+            SpawnCard(playerOneHand, i, 0 + (i), -1, 1/8);
         }    
     }
     
     private void SpawnPlayerTwoStartingHand()
     {
-        for (i = 0; i < startingHandSize; i++)
+        for (int i = 0; i < startingHandSize; i++)
         {
             SpawnPlayerTwoCardsOnBoard(i, 2 + (i) , 4, 1/8);
             
         }    
     }
-
-    private void PlayerOneDrawCard(int i)
+    
+    public void PlayerOneDrawCard(int i)
     {
  
         for (int j = 0; j < i; j++)
@@ -255,6 +261,10 @@ public class BoardManager : MonoBehaviour
             playerOneHand.Add(card);
             playerOneCardPrefabs.Remove(card);
         }
+        for (int k = 0; k < i; k++)
+        {
+            SpawnCard(playerOneHand, k, 0 + (k), -1, 1/8);
+        }  
 
     }
     
@@ -268,24 +278,14 @@ public class BoardManager : MonoBehaviour
             playerTwoHand.Add(card);
             playerTwoCardPrefabs.Remove(card);
         }
-
+        for (int k = 0; k < i; k++)
+        {
+            SpawnCard(playerTwoHand, k, 2 + (k) , 4, 1/8);
+        }  
     }
 
     
 
 
-    /*
-    public class BaseHealth
-    {
-        public int CalculateBaseHealth(int baseUpgrades, int damageTaken, int baseHealing)
-        {
-            int health = 20;
-
-            health += baseUpgrades * 5;
-            health += baseHealing;
-            health -= damageTaken;
-
-            return health;
-        }
-    }*/
+  
 }
