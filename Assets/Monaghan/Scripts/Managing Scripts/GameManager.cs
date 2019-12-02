@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        //Change the players turn and flip the camera around
         isPlayerOneTurn = !isPlayerOneTurn;
         MainCamera.instance.gameObject.transform.Rotate(new Vector3(0, 0, 180));
         //timer to trigger this

@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class EndTurn : MonoBehaviour
 {
+    public int turnNumber = 1;
+    public delegate void ButtonPush();
+    public static ButtonPush OnButtonPush;
+    
+    //end the turn and start the next players turn when you click the button to the side of the board
     private void OnMouseDown()
     {
         GameManager.Instance.EndTurn();
+        //if player one turn
         if (GameManager.Instance.isPlayerOneTurn)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
             //PlayerTwoDrawCard
-            //turn number++
+            OnButtonPush?.Invoke();
+            turnNumber++;
         }
+        //if player two turn
         else
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
             //PlayerOneDrawCard
-            //turn number++
+            OnButtonPush?.Invoke();
+            turnNumber++;
         }
         
     }
