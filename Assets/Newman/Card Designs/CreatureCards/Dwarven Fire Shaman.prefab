@@ -1696,7 +1696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1026f32053261c4aad23a96ea133439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
+  isPlayerOne: 1
+  cardState: 0
 --- !u!212 &8908808271617950777
 SpriteRenderer:
   m_ObjectHideFlags: 0

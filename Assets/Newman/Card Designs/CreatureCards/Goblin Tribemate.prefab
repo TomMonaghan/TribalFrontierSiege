@@ -470,7 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c505a41481922458e2ad45a221a10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
+  isPlayerOne: 1
+  cardState: 0
 --- !u!212 &3552053179734025212
 SpriteRenderer:
   m_ObjectHideFlags: 0
