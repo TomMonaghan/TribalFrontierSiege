@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8453078730904617509}
   - component: {fileID: 6202436144845374397}
   - component: {fileID: 5718155405914348179}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1688728141140914915}
   - component: {fileID: 6743878509236655729}
   - component: {fileID: 9158853118774982708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3369660801808468233}
   - component: {fileID: -1323421974597183466}
   - component: {fileID: 1233339799389202751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gnome Scientist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfd3548a7a408742ac47866c871bc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 1
+  mouseOver: 0
+  isPlayerOneCard: 1
+  cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &3474571266427839194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -585,7 +588,7 @@ GameObject:
   - component: {fileID: 182593742783722413}
   - component: {fileID: 8433493121463567539}
   - component: {fileID: 7783158091556172230}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +792,7 @@ GameObject:
   - component: {fileID: 2832566422244198067}
   - component: {fileID: 5823071643994169916}
   - component: {fileID: 2880807403957320444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +996,7 @@ GameObject:
   - component: {fileID: 2334952437938003699}
   - component: {fileID: 5207746062232874931}
   - component: {fileID: 3394326829721658990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1200,7 @@ GameObject:
   - component: {fileID: 6213377106266562432}
   - component: {fileID: 189685973151001833}
   - component: {fileID: 3394937997873427167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1406,7 @@ GameObject:
   - component: {fileID: 6852947250057226580}
   - component: {fileID: 493692947020266963}
   - component: {fileID: 562862522552364899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,7 +1610,7 @@ GameObject:
   - component: {fileID: 644858570425059588}
   - component: {fileID: 851512460383521197}
   - component: {fileID: 3929692598876324505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1814,7 @@ GameObject:
   - component: {fileID: 5874798917704273248}
   - component: {fileID: 1245037728884559806}
   - component: {fileID: 3694247273437219883}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

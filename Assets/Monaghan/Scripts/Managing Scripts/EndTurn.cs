@@ -12,9 +12,9 @@ public class EndTurn : MonoBehaviour
     //end the turn and start the next players turn when you click the button to the side of the board
     private void OnMouseDown()
     {
-        GameManager.Instance.EndTurn();
+        GameManager.instance.EndTurn();
         //if player one turn
-        if (GameManager.Instance.isPlayerOneTurn)
+        if (GameManager.instance.isPlayerOneTurn)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
             //PlayerTwoDrawCard

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3388479226997602063}
   - component: {fileID: 6379127468714295313}
   - component: {fileID: 4723619471162864996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 238003897480007083}
   - component: {fileID: 1268305049946422022}
   - component: {fileID: 296677899240034042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ork Leader Dakrakk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf31328fce804243959e6bd1b9a1506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
+  mouseOver: 0
+  isPlayerOneCard: 0
+  cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &2141135916773385848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -381,7 +384,7 @@ GameObject:
   - component: {fileID: 4242793965147305537}
   - component: {fileID: 8077749278377726675}
   - component: {fileID: 5950442095044066454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +588,7 @@ GameObject:
   - component: {fileID: 6395570774682666631}
   - component: {fileID: 8907422019463874335}
   - component: {fileID: 7121325596968181297}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +792,7 @@ GameObject:
   - component: {fileID: 8937821791660968386}
   - component: {fileID: 4380239757338331932}
   - component: {fileID: 2218697640541948041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +996,7 @@ GameObject:
   - component: {fileID: 8256348102458928630}
   - component: {fileID: 3122979105938372977}
   - component: {fileID: 3044802331682237377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1200,7 @@ GameObject:
   - component: {fileID: 2701034536894139814}
   - component: {fileID: 2765159593667775759}
   - component: {fileID: 1947786450320688699}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1401,7 +1404,7 @@ GameObject:
   - component: {fileID: 775098293427290641}
   - component: {fileID: 9025577742674060958}
   - component: {fileID: 753316097551154782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1605,7 +1608,7 @@ GameObject:
   - component: {fileID: 8913932507406031650}
   - component: {fileID: 3399964345619474507}
   - component: {fileID: 185705258814994045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1814,7 @@ GameObject:
   - component: {fileID: 1002496437328829009}
   - component: {fileID: 7335060452461390609}
   - component: {fileID: 186316270986945228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

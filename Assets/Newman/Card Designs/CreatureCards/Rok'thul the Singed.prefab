@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7454310030064883643}
   - component: {fileID: 1221600934713013044}
   - component: {fileID: 7477915259651910644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6943180092844314619}
   - component: {fileID: 610776710541147835}
   - component: {fileID: 8009468428527449958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 1586976620062084744}
   - component: {fileID: 4800183260648619489}
   - component: {fileID: 8007810539685028823}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 2244697424558831708}
   - component: {fileID: 5108691952848907483}
   - component: {fileID: 5184763738425376363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 5246328704249616396}
   - component: {fileID: 5471140513271519397}
   - component: {fileID: 8553841766342054801}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 1277668934336273512}
   - component: {fileID: 5871295793942044342}
   - component: {fileID: 8320630176045653283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 3851445250950976301}
   - component: {fileID: 1598550899376771765}
   - component: {fileID: 1109771543081618331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 6292612871148692459}
   - component: {fileID: 2137902069955659641}
   - component: {fileID: 4550468783427889468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1649,7 +1649,7 @@ GameObject:
   - component: {fileID: 7998177401222502401}
   - component: {fileID: 8386015760800754510}
   - component: {fileID: -3208679125017640948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rok'thul the Singed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1696,7 +1696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab764235ec727e4e9277483470b4ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
+  mouseOver: 0
+  isPlayerOneCard: 0
+  cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &8071685787944711122
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1811,7 +1814,7 @@ GameObject:
   - component: {fileID: 4806747454322221733}
   - component: {fileID: 3834113674746779067}
   - component: {fileID: 3188300394960724174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

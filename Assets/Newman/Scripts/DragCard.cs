@@ -26,7 +26,7 @@ public class DragCard : MonoBehaviour
 
     void OnMouseDrag()
     {
-       // if GameManager.Instance; 
+       // if GameManager.instance; 
         transform.position = GetMouseWorldPos() + mOffset;
     }*/
 }

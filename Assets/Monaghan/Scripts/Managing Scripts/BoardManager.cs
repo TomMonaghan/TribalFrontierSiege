@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
-
+    
+    
     public static BoardManager instance;
     public PlayerBase[,] Cards { set; get;}
     private PlayerBase selectedCard; 
@@ -15,10 +16,24 @@ public class BoardManager : MonoBehaviour
     private const float tileSize = 1.0f;
     private const float tileOffset = 0.5f;
     private const float heightOffset = 0.0f;
-
-    //To keep track of which tile you're selecting so you know which tile you're hovering over
+    
     private int selectionX = -1;
     private int selectionY = -1;
+
+    
+    [Header("References")]
+    
+    public List<GameObject> objectPrefabs;
+    public List<GameObject> playerOneCardPrefabs;
+    public List<GameObject> playerTwoCardPrefabs;
+    
+    
+    [Header("Controls")]
+ 
+
+    //To keep track of which tile you're selecting so you know which tile you're hovering over
+    public float handSpacing;
+
     public int tileColumnNumber = 4;
     public int tileRowNumber = 6;
     [SerializeField]
@@ -28,15 +43,23 @@ public class BoardManager : MonoBehaviour
     public int playerOneHandSize = 0;
     public int playerTwoHandSize = 0;
     public int maximumHandSize = 10;
-    private float handSpacing;
 
     public float columnLineLength = 2.0f;
     public float rowLineLength = 4.5f;
     public Vector3 widthLine;
     public Vector3 heightLine;
-    public List<GameObject> objectPrefabs;
-    public List<GameObject> playerOneCardPrefabs;
-    public List<GameObject> playerTwoCardPrefabs;
+
+
+    //Which way the objects are facing in the SpawnBasesOnBoard function
+    private Quaternion YourCardsFaceUpCardOrientation = Quaternion.Euler(90, 0, 0);
+    private Quaternion EnemyCardsFaceUpCardOrientation = Quaternion.Euler(90, 180, 0);
+    private Quaternion YourCardsFaceDownCardOrientation = Quaternion.Euler(90,180 , 180);
+    private Quaternion baseOrientation = Quaternion.Euler(0, 0, 0);
+
+
+    [Header("Read Only")]
+    
+    
     public List<GameObject> playerOneHand;
     public List<GameObject> playerTwoHand;
     public List<GameObject> playerOne;
@@ -47,20 +70,13 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> playerTwoInPlay;
     private List<GameObject> activeObject = new List<GameObject>();
     private List<GameObject> activeCard = new List<GameObject>();
-    //Which way the objects are facing in the SpawnBasesOnBoard function
-    private Quaternion YourCardsFaceUpCardOrientation = Quaternion.Euler(90, 0, 0);
-    private Quaternion EnemyCardsFaceUpCardOrientation = Quaternion.Euler(90, 180, 0);
-    private Quaternion YourCardsFaceDownCardOrientation = Quaternion.Euler(90,180 , 180);
-    private Quaternion baseOrientation = Quaternion.Euler(0, 0, 0);
-
-
+    
     
 
     private void Start()
     {
         instance = this;
         
-         handSpacing = (float) tileColumnNumber / maximumHandSize;
 
         EndTurn.OnButtonPush += EndCurrentPlayerTurn;
         //spawn the two main bases
@@ -70,9 +86,9 @@ public class BoardManager : MonoBehaviour
         SpawnPlayerTwoDeck();
         //Draw the starting hand for both players
         PlayerOneDrawCard(startingHandSize);
-        GameManager.Instance.isPlayerOneTurn = false;
+        GameManager.instance.isPlayerOneTurn = false;
         PlayerTwoDrawCard(startingHandSize);
-        GameManager.Instance.isPlayerOneTurn = true; 
+        GameManager.instance.isPlayerOneTurn = true; 
         
         //Making the inplay array slots all have null in them so cards can be placed in
         playerOneInPlay = new List<GameObject>();
@@ -96,6 +112,7 @@ public class BoardManager : MonoBehaviour
     {
         UpdateSelection();
         DrawGameboard();
+        
     }
     
     //Draws white lines the make up the board grid
@@ -135,17 +152,16 @@ public class BoardManager : MonoBehaviour
     //Casts to the board hitting it and giving the mouse position in x and z values
     private void UpdateSelection()
     {
-        if (!Camera.main)
+        if (!GameManager.instance.currentCamera)
             return;
 
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f,
+        if (Physics.Raycast(GameManager.instance.currentCamera.ScreenPointToRay(Input.mousePosition), out hit, 25.0f,
             LayerMask.GetMask("BoardPlane")))
         {
             
             selectionX = (int) hit.point.x;
-            selectionY = (int) hit.point.z;
-           // Debug.Log(hit.point);
+            selectionY = (int) hit.point.z;// Debug.Log(hit.point);
         }
         else
         {
@@ -199,7 +215,7 @@ public class BoardManager : MonoBehaviour
         GameObject card = cardList[index];
         card.transform.SetParent(transform);
         card.transform.position = GetTileCentre(x, y, z);
-        if (GameManager.Instance.isPlayerOneTurn)
+        if (GameManager.instance.isPlayerOneTurn)
         {
             card.transform.rotation = YourCardsFaceUpCardOrientation;
         }
@@ -222,7 +238,7 @@ public class BoardManager : MonoBehaviour
         card.transform.position = position;
         
         //setting which way the cards face when they spawn
-        if (GameManager.Instance.isPlayerOneTurn)
+        if (GameManager.instance.isPlayerOneTurn)
         {
             card.transform.rotation = YourCardsFaceUpCardOrientation;
         }
@@ -322,7 +338,7 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void EndCurrentPlayerTurn()
     {
-        if (GameManager.Instance.isPlayerOneTurn)
+        if (GameManager.instance.isPlayerOneTurn)
         {
             PlayerOneDrawCard(1);
         }

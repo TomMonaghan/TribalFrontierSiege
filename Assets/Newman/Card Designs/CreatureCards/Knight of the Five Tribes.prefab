@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8023766482671196651}
   - component: {fileID: 7816547444077533506}
   - component: {fileID: 5846174757107618422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4085421655351278011}
   - component: {fileID: 7021438855790341436}
   - component: {fileID: 6946637592408178572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3904515409383841167}
   - component: {fileID: 8570237225569066833}
   - component: {fileID: 6119336623511329988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4676871982557468252}
   - component: {fileID: 3992281229724234451}
   - component: {fileID: 4634896144905857555}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 3572062454136442735}
   - component: {fileID: 7280416301507034118}
   - component: {fileID: 5239344917670044208}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 5174548774122032668}
   - component: {fileID: 3453551854067416924}
   - component: {fileID: 5238750875314501249}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 7286945573332394818}
   - component: {fileID: 1342375196594099292}
   - component: {fileID: 840923409342374185}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 5290509979715508710}
   - component: {fileID: 6847807742257817087}
   - component: {fileID: -3415303790175516049}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Knight of the Five Tribes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,7 +1492,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54009314b04b3c46ad78e1835415457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 1
+  mouseOver: 0
+  isPlayerOneCard: 1
+  cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &6309809464014139957
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1607,7 +1610,7 @@ GameObject:
   - component: {fileID: 8126546665137562124}
   - component: {fileID: 4197297303162259102}
   - component: {fileID: 1779504647431497947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1814,7 @@ GameObject:
   - component: {fileID: 1362202820320350922}
   - component: {fileID: 3583634543586661202}
   - component: {fileID: 2950458523483441788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

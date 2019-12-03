@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7718235372786800382}
   - component: {fileID: 7511862665887094359}
   - component: {fileID: 6153961910351158627}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4392380103227881134}
   - component: {fileID: 7293476548114424361}
   - component: {fileID: 7215295617816309913}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3632482012027048602}
   - component: {fileID: 8262155257079730244}
   - component: {fileID: 5812681520651752401}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4945266297057450313}
   - component: {fileID: 3684478408390000070}
   - component: {fileID: 4905825495015384326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 4866486322115150089}
   - component: {fileID: 3146872828173152329}
   - component: {fileID: 5545412308989229460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 3878734900090798202}
   - component: {fileID: 7012024606920323859}
   - component: {fileID: 5544897914926148901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 5561138484612732659}
   - component: {fileID: -1921384297738499323}
   - component: {fileID: -5738468521630099294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ork Berserker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a808918201e6ba24a8f343b78b027e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 0
+  mouseOver: 0
+  isPlayerOneCard: 0
+  cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &6041149479916633376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1403,7 +1406,7 @@ GameObject:
   - component: {fileID: 7018549214411467863}
   - component: {fileID: 1650455008909187913}
   - component: {fileID: 1147578246098529852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,7 +1610,7 @@ GameObject:
   - component: {fileID: 8395202380004224281}
   - component: {fileID: 4501700357200775563}
   - component: {fileID: 2086461008037881806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1814,7 @@ GameObject:
   - component: {fileID: 1630601069110779359}
   - component: {fileID: 3890313577987300423}
   - component: {fileID: 3221385803653678441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

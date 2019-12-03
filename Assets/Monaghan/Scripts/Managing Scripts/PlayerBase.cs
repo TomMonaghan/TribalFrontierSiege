@@ -7,14 +7,23 @@ public abstract class PlayerBase : MonoBehaviour
 {
     private float tileColumnMax;
     private float tileRowMax;
+    private Quaternion zoomedInOrientationPlayerOne = Quaternion.Euler(90, 0, 0);
+    private Quaternion zoomedInOrientationPlayerTwo = Quaternion.Euler(90, 180, 0);
+
+    private Vector3 zoomedPositionPlayerOne = new Vector3(1.72f, 3.94f, 1.71f);
+    private Vector3 zoomedPositionPlayerTwo = new Vector3(4.27f, 3.94f, 2.3f);
+
     public int CurrentX { set; get;}
     public int CurrentY { set; get;}
-
-    public bool isPlayerOne;
+    public bool mouseOver = false;
+    public bool isPlayerOneCard;
+    //variables for testing mouse over
+    private Color startColor = Color.white;
+    private Color mouseOverColor = new Color(1,1,1,0.5f);
     
     public enum CardState{InDeck, InHand, InPlay}
     [SerializeField] private CardState cardState;
-    
+    private GameObject cardClone;
     
     public Vector3 CurrentPosition;
         
@@ -35,23 +44,76 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
 
+    private void OnMouseEnter()
+    {
+        
+        Debug.Log("mouseentered: " + gameObject.name);
+        Debug.Log("absolute mouse = " + Input.mousePosition);
+        
+        if ((cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard) ||
+            cardState == CardState.InPlay)
+        {
+
+
+            mouseOver = true;
+            //make card show up larger and flip the right way if needed
+            if (cardClone != null)
+            {
+                Destroy(cardClone);
+            }
+            //if statement here changiing for player one or two and giving different orientation values
+            if (GameManager.instance.isPlayerOneTurn)
+            {
+                cardClone = Instantiate(gameObject, zoomedPositionPlayerOne, zoomedInOrientationPlayerOne);
+                //GetComponent<Renderer>().material.SetColor("_Color", mouseOverColor);
+            }
+            else
+            {
+                cardClone = Instantiate(gameObject, zoomedPositionPlayerTwo, zoomedInOrientationPlayerTwo);
+                //GetComponent<Renderer>().material.SetColor("_Color", mouseOverColor);
+            }
+            Debug.Log("hovered");
+
+        }
+
+    }
+
+    private void OnMouseExit()
+    {
+
+        if ((cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard) ||
+            cardState == CardState.InPlay)
+        {
+            mouseOver = false;
+            //GetComponent<Renderer>().material.SetColor("_Color", startColor);
+        }
+        Destroy(cardClone);
+        
+    }
+
     void OnMouseDown()
     {
-        mZCoord = MainCamera.instance.WorldToScreenPoint(gameObject.transform.position).z;
+        mZCoord = GameManager.instance.playerOneCamera.WorldToScreenPoint(gameObject.transform.position).z;
     }
 
     private Vector3 GetMouseWorldPos()
     {
-        Vector3 mousePoint = Input.mousePosition;
 
+
+        Vector3 mousePoint = Input.mousePosition;
+        
+        if (!Application.isEditor && !GameManager.instance.isPlayerOneTurn)
+        {
+            mousePoint.x += Screen.width;
+        }
         mousePoint.z = mZCoord;
 
-        return MainCamera.instance.ScreenToWorldPoint(mousePoint);
+        return GameManager.instance.currentCamera.ScreenToWorldPoint(mousePoint);
     }
 
     void OnMouseDrag()
     {
-        if (cardState == CardState.InHand && GameManager.Instance.isPlayerOneTurn == isPlayerOne)
+        if (cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
         {
             transform.position = GetMouseWorldPos();
         }
@@ -63,7 +125,7 @@ public abstract class PlayerBase : MonoBehaviour
         //If the card you are clicking isn't a card from in your hand then run this 
         if (cardState == CardState.InHand)
         {
-            if (isPlayerOne)
+            if (isPlayerOneCard)
             {
                 //If it's within player one combat zone then snap to the square you're in 
                 if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
@@ -132,6 +194,8 @@ public abstract class PlayerBase : MonoBehaviour
             case CardState.InPlay:
                 
                 CurrentPosition = transform.position;
+
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 
                 Debug.Log("[PlayerBase] card(" + gameObject.name + ") is being set to " + targetState );
                 

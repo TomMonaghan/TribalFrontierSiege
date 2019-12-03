@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7562066821665047205}
   - component: {fileID: 2265630969084012074}
   - component: {fileID: 7513192201350594282}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1838821171070262166}
   - component: {fileID: 5557285745116735743}
   - component: {fileID: 6963595872105199305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 8059751516371049189}
   - component: {fileID: 575113720071990181}
   - component: {fileID: 6964119555932119672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 2178033507191785846}
   - component: {fileID: 6843734917987421096}
   - component: {fileID: 9005525524308691005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 5137596612998139154}
   - component: {fileID: 4931364076459052475}
   - component: {fileID: 8734596284885567119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 1199110498032479554}
   - component: {fileID: 5289306842626685381}
   - component: {fileID: 5219997326182017909}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 6399904096952039157}
   - component: {fileID: 1308724863120003687}
   - component: {fileID: 3505031898676329506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 4247397767178520115}
   - component: {fileID: 1850396009532819371}
   - component: {fileID: 64299000119778949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 5563673527843387323}
   - component: {fileID: 4230954680383242405}
   - component: {fileID: 2575428546397074896}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1853,7 +1853,7 @@ GameObject:
   - component: {fileID: 7025025218667498783}
   - component: {fileID: -5023032845912145299}
   - component: {fileID: -3998370260061580331}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dwarven Smithy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,8 +1900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047236422a041641855abc17810b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 1
+  mouseOver: 0
+  isPlayerOneCard: 1
   cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &9189242896819791564
 SpriteRenderer:
   m_ObjectHideFlags: 0

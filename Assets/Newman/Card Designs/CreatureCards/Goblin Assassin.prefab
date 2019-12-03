@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8010884890311613379}
   - component: {fileID: 7786636048228326250}
   - component: {fileID: 5861308127917199454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 4090413182428560275}
   - component: {fileID: 6991677032264249108}
   - component: {fileID: 6922365033326394788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TechIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3916412402073132967}
   - component: {fileID: 8546104892874530169}
   - component: {fileID: 6096189973112970988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4652730849560401012}
   - component: {fileID: 3967999921854886139}
   - component: {fileID: 4621873247601616955}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 3595217926137580871}
   - component: {fileID: 7313696579156065838}
   - component: {fileID: 5243210545223737368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardAbilityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 5168431385817779252}
   - component: {fileID: 3430405199582756212}
   - component: {fileID: 5243751743912621225}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardTypeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 7302070178119491946}
   - component: {fileID: 1357649910481376884}
   - component: {fileID: 855062864698123009}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoldIconTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 5268629425670724558}
   - component: {fileID: -6901616273973853333}
   - component: {fileID: 356588046316582184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Goblin Assassin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,8 +1492,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0de7e917bbbbe4eaac255274842113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOne: 1
+  mouseOver: 0
+  isPlayerOneCard: 1
   cardState: 0
+  CurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &6333950042850324509
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1608,7 +1610,7 @@ GameObject:
   - component: {fileID: 8120288530497069092}
   - component: {fileID: 4200046385173431478}
   - component: {fileID: 1784646236722408179}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1812,7 +1814,7 @@ GameObject:
   - component: {fileID: 1338062190210896098}
   - component: {fileID: 3588776158479602042}
   - component: {fileID: 2919570757193107540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
