@@ -20,8 +20,15 @@ public class CardDisplay : MonoBehaviour
     public TextMeshPro healthText;
     public SpriteRenderer cardArt;
 
+    public float goldCost;
+    public float techCost;
+    public float attack;
+    public float health;
+
     // Start is called before the first frame update
-    void Start()
+    
+
+    public void InitialiseCard()
     {
         cardNameText.text = card.cardName;
         cardDescriptionText.text = card.cardDescription;
@@ -31,5 +38,11 @@ public class CardDisplay : MonoBehaviour
         techCostText.text = card.techCost.ToString();
         attackText.text = card.attack.ToString();
         healthText.text = card.health.ToString();
+
+        goldCost = card.goldCost;
+        techCost = card.techCost;
+        attack = card.attack;
+        health = card.health;
+
     }
 }

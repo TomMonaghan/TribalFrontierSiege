@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameManager : MonoBehaviour
     public Camera playerOneCamera;
     public Camera playerTwoCamera;
 
+    public GameObject GameElements;
+    public SpriteRenderer GameOverSpritePlayerOneRenderer;
+    public SpriteRenderer GameOverSpritePlayerTwoRenderer;
+    public Sprite playerOneWinGfx;
+    public Sprite playerTwoWinGfx;
     
     public void Start()
     {
@@ -48,17 +54,39 @@ public class GameManager : MonoBehaviour
 
         }
 
-//        if (currentCamera == playerOneCamera)
-//        {
-//            playerOneCamera.gameObject.SetActive(true);
-//            playerTwoCamera.gameObject.SetActive(false);
-//        }
-//        else
-//        {
-//            playerTwoCamera.gameObject.SetActive(true);
-//            playerOneCamera.gameObject.SetActive(false);
-//        }
+//        
         //timer to trigger this
 
+    }
+
+    public void DisplayEndScreen (bool playerOneWins)
+    {
+        // Set win graphic sprite
+        GameOverSpritePlayerOneRenderer.sprite = playerOneWins ? playerOneWinGfx : playerTwoWinGfx;
+        GameOverSpritePlayerTwoRenderer.sprite = playerOneWins ? playerOneWinGfx : playerTwoWinGfx;
+        
+        GameOverSpritePlayerOneRenderer.gameObject.SetActive(true);
+        GameOverSpritePlayerTwoRenderer.gameObject.SetActive(true);
+        
+        GameElements.SetActive(false);
+
+        StartCoroutine(WaitForEnd());
+
+    }
+
+
+    IEnumerator WaitForEnd()
+    {
+        while (true)
+        {
+
+            if (Input.GetKeyDown((KeyCode.Space)))
+            {
+                SceneManager.LoadScene("Game");
+            }
+
+            yield return null;
+
+        }
     }
 }

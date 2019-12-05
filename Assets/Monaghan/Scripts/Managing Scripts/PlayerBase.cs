@@ -26,6 +26,10 @@ public abstract class PlayerBase : MonoBehaviour
     private GameObject cardClone;
     
     public Vector3 CurrentPosition;
+
+
+    public float raycastDistance;
+    public LayerMask layersToHit;
         
     public void SetPosition(int x, int y)
     {
@@ -35,12 +39,29 @@ public abstract class PlayerBase : MonoBehaviour
     
     private float mZCoord;
 
+    public Card cardReference;
+
 
     private void Start()
     {
         //Generate the numbers for tile column and row max numbers
         tileColumnMax = BoardManager.instance.tileColumnNumber;
         tileRowMax = BoardManager.instance.tileRowNumber;
+        cardReference = GetComponent<CardDisplay>().card;
+        if (cardReference == null)
+        {
+            Debug.LogError("[PlayerBase] NO CARD DISPLAY!! Check your references");
+        }
+
+        EndTurn.OnButtonPush += DoDamage;
+        EndTurn.OnApplyDamage += DoApplyDamage;
+
+    }
+
+    void OnDestroy()
+    {
+        EndTurn.OnButtonPush -= DoDamage;
+        EndTurn.OnApplyDamage -= DoApplyDamage;
     }
 
 
@@ -65,6 +86,8 @@ public abstract class PlayerBase : MonoBehaviour
             if (GameManager.instance.isPlayerOneTurn)
             {
                 cardClone = Instantiate(gameObject, zoomedPositionPlayerOne, zoomedInOrientationPlayerOne);
+                //so it didnt get stuck
+                Destroy(cardClone.GetComponent<CardDisplay>());
                 //GetComponent<Renderer>().material.SetColor("_Color", mouseOverColor);
             }
             else
@@ -123,7 +146,7 @@ public abstract class PlayerBase : MonoBehaviour
     private void OnMouseUp()
     {
         //If the card you are clicking isn't a card from in your hand then run this 
-        if (cardState == CardState.InHand)
+        if (cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
         {
             if (isPlayerOneCard)
             {
@@ -194,8 +217,14 @@ public abstract class PlayerBase : MonoBehaviour
             case CardState.InPlay:
                 
                 CurrentPosition = transform.position;
+                
+                int layer = LayerMask.NameToLayer("Default");
 
-                gameObject.layer = LayerMask.NameToLayer("Default");
+                gameObject.layer = layer;
+                foreach (Transform child in transform)
+                {
+                    child.gameObject.layer = layer;
+                }
                 
                 Debug.Log("[PlayerBase] card(" + gameObject.name + ") is being set to " + targetState );
                 
@@ -209,7 +238,74 @@ public abstract class PlayerBase : MonoBehaviour
         
         
     }
-    
+
+
+    private RaycastHit hitInfo;
+    public void DoDamage()
+    {
+        if (cardState == CardState.InPlay)
+        {
+            
+            //Debug.Log(gameObject.name + " WANNA HIT SOMETHING");
+
+            if (Physics.Raycast(transform.position, transform.up, out hitInfo, raycastDistance, layersToHit))
+            {
+                GameObject hitObject = hitInfo.transform.gameObject;
+                
+                //Debug.Log(gameObject.name + " HIT SOMETHING");
+
+                if (hitObject.tag == "Card")
+                {
+                    //Debug.Log(gameObject.name + " HIT A CARD");
+                    
+                    hitObject.GetComponent<CardDisplay>().health -= cardReference.attack;
+                }
+                else if (hitObject.tag == "Building")
+                {
+                    //Debug.Log(gameObject.name + " HIT A BUILDING");
+
+                    hitObject.GetComponentInParent<BuildingManager>().TakeDamage(cardReference.attack);
+
+                }
+
+            } 
+            else
+            {
+                Debug.Log(gameObject.name + " HIT DA BASE");
+
+                if (isPlayerOneCard)
+                {
+                    BoardManager.instance.PlayerTwoBase.TakeDamage(cardReference.attack);
+                }
+                else
+                {
+                    BoardManager.instance.PlayerOneBase.TakeDamage(cardReference.attack);
+                }
+                    
+            }
+        }
+
+    }
+
+    public void DoApplyDamage()
+    {
+
+        if (cardState == CardState.InPlay)
+        {
+            if (GetComponent<CardDisplay>().health <= 0)
+            {
+                Destroy(gameObject);
+                //Remove from list
+
+            }
+            else
+            {
+                GetComponent<CardDisplay>().healthText.text = GetComponent<CardDisplay>().health.ToString();
+            }
+
+        }
+
+    }
     
     
 }

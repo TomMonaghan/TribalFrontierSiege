@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8181570774102871939}
   m_Layer: 9
   m_Name: A MasterCard
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,10 @@ MonoBehaviour:
   attackText: {fileID: 896179957890756323}
   healthText: {fileID: 7264176413020180108}
   cardArt: {fileID: 4524432660309936211}
+  goldCost: 0
+  techCost: 0
+  attack: 0
+  health: 0
 --- !u!114 &806926339547860703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +172,11 @@ MonoBehaviour:
   isPlayerOneCard: 1
   cardState: 0
   CurrentPosition: {x: 0, y: 0, z: 0}
+  raycastDistance: 2
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 1
+  cardReference: {fileID: 0}
 --- !u!1001 &70990506309053162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1244,6 +1253,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 1219731519370970705, guid: 42f01024ab9426d4183ab61e047c387b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5329936627571508824, guid: 42f01024ab9426d4183ab61e047c387b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1374,6 +1388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Artwork
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990467186519794618, guid: c6efe7dfe1f852b4b84a696ebc4d2346,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 770344191156302221, guid: c6efe7dfe1f852b4b84a696ebc4d2346,
         type: 3}

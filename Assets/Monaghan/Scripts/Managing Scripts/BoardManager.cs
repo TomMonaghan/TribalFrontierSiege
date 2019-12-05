@@ -43,7 +43,13 @@ public class BoardManager : MonoBehaviour
     public int playerOneHandSize = 0;
     public int playerTwoHandSize = 0;
     public int maximumHandSize = 10;
-
+    public int playerOneCurrentGold;
+    public int playerOneCurrentTechAmount;
+    public int playerOneCurrentArmySize;
+    public int playerTwoCurrentGold;
+    public int playerTwoCurrentTechAmount;
+    public int playerTwoCurrentArmySize;
+    
     public float columnLineLength = 2.0f;
     public float rowLineLength = 4.5f;
     public Vector3 widthLine;
@@ -70,14 +76,17 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> playerTwoInPlay;
     private List<GameObject> activeObject = new List<GameObject>();
     private List<GameObject> activeCard = new List<GameObject>();
-    
-    
+
+    public MainBases PlayerOneBase;
+    public MainBases PlayerTwoBase;
 
     private void Start()
     {
         instance = this;
-        
-
+        //spawn a tech building (make it in a position you click
+        //SpawnTechBuilding.OnButtonPush += SpawnTechBuildingCurrentPlayer;
+        //SpawnBarracksBuilding.OnButtonPush += SpawnBarracksBuildingCurrentPlayer;
+        //switch turns
         EndTurn.OnButtonPush += EndCurrentPlayerTurn;
         //spawn the two main bases
         SpawnMainBases();
@@ -106,8 +115,15 @@ public class BoardManager : MonoBehaviour
     {
        
         EndTurn.OnButtonPush -= EndCurrentPlayerTurn;
+        /////////////////////////////
+        /// IS IT OKAY TO PUT THEM ALL IN HERE??????
+        /// //////////////////////////////////
+       //SpawnTechBuilding.OnButtonPush -= SpawnTechBuildingCurrentPlayer;
+        //SpawnBarracksBuilding.OnButtonPush -= SpawnBarracksBuildingCurrentPlayer;
 
     }
+    
+    
     private void Update()
     {
         UpdateSelection();
@@ -172,13 +188,20 @@ public class BoardManager : MonoBehaviour
         
     }
     //Spawn the 2 main bases onto the board
-    private void SpawnBasesOnBoard(int index, int x, int y, int z) 
+    private void SpawnBasesOnBoard(int index, int x, int y, int z, out MainBases baseReferenceToSave) 
          {
              GameObject go = Instantiate(objectPrefabs [index], GetTileLine(x, y, z), baseOrientation) as GameObject;
              go.transform.SetParent(transform);
-             //Cards[x, y] = go.GetComponent<PlayerBase>();
              activeObject.Add(go);
+             baseReferenceToSave = go.GetComponent<MainBases>();
          }
+    
+    private void SpawnSideBasesOnBoard(int index, int x, int y, int z) 
+    {
+        GameObject go = Instantiate(objectPrefabs [index], GetTileCentre(x, y, z), baseOrientation) as GameObject;
+        go.transform.SetParent(transform);
+        activeObject.Add(go);
+    }
     
     //Used to spawn the bases in the centre
     private Vector3 GetTileLine(int x, int y, int z)
@@ -203,8 +226,8 @@ public class BoardManager : MonoBehaviour
     //Positioning the main bases at the top and bottom
     private void SpawnMainBases()
     {
-        SpawnBasesOnBoard(0,3, 0, 0);
-        SpawnBasesOnBoard(1, 3, 3, 0);
+        SpawnBasesOnBoard(0,3, 0, 0, out PlayerOneBase);
+        SpawnBasesOnBoard(1, 3, 3, 0, out PlayerTwoBase);
 
     }
     
@@ -230,9 +253,6 @@ public class BoardManager : MonoBehaviour
     {
         //puts the spawned card into whatever list was specified
         GameObject card = cardList[index];
-        /////////////////////////////////////////////////////////////////////////
-        //POTENTIALLY NOT NEEDED, IS THE SET PARENT(TRANSFORM) DOING ANYTHING)???
-        /////////////////////////////////////////////////////////////////////////
         card.transform.SetParent(transform);
         //set position of spawn card
         card.transform.position = position;
@@ -254,6 +274,14 @@ public class BoardManager : MonoBehaviour
         GameObject go = Instantiate(playerOneCardPrefabs [index], GetTileCentre(x, y, z), YourCardsFaceUpCardOrientation) as GameObject;
         go.transform.SetParent(transform);
         playerOneDeck.Add(go);
+        
+        int layer = LayerMask.NameToLayer("PlayerOneOnly");
+        go.layer = layer;
+        foreach (Transform child in go.transform)
+        {
+            child.gameObject.layer = layer;
+        }
+        go.GetComponent<CardDisplay>().InitialiseCard();
     }
     
     //Same as above for for player two
@@ -262,6 +290,14 @@ public class BoardManager : MonoBehaviour
         GameObject go = Instantiate(playerTwoCardPrefabs [index], GetTileCentre(x, y, z), EnemyCardsFaceUpCardOrientation) as GameObject;
         go.transform.SetParent(transform);
         playerTwoDeck.Add(go);
+        
+        int layer = LayerMask.NameToLayer("PlayerTwoOnly");
+        go.layer = layer;
+        foreach (Transform child in go.transform)
+        {
+            child.gameObject.layer = layer;
+        }
+        go.GetComponent<CardDisplay>().InitialiseCard();
     }
     
     //Spawn the cards from the index up to how big the deck size is for player one, should be all the cards
@@ -329,13 +365,7 @@ public class BoardManager : MonoBehaviour
         RestructureHandPlayerTwo();
 
     }
-
-
-
-    //Changing whose turn it is and making them draw a card
-    /// <summary>
-    /// Am I doubling up on this?????????
-    /// </summary>
+    
     void EndCurrentPlayerTurn()
     {
         if (GameManager.instance.isPlayerOneTurn)
@@ -347,7 +377,62 @@ public class BoardManager : MonoBehaviour
             PlayerTwoDrawCard(1);
         }
         
+        
+        
     }
+
+    
+    /////////////////////////////////////
+    /// HOW TO BLOCK THIS BUTTON ONCE IT'S BEEN CLICKED
+    /// ////////////////////////////
+//    void SpawnTechBuildingCurrentPlayer()
+//    {
+//        //ifplayerone do index 3
+//        //else do index 5
+//        if (GameManager.instance.isPlayerOneTurn)
+//        {   
+//            /////////////////////////////////
+//            ///HOW TO MAKE THE POSITION EQUAL TO THE TOP CENTRE OF THE OBJECT YOU CLICK
+//            /// ////////////////////////////
+//            SpawnSideBasesOnBoard(3,0, 0, 0);
+//            playerOneCurrentTechAmount++;
+//        }
+//        else
+//        {
+//            /////////////////////////////////
+//            ///HOW TO MAKE THE POSITION EQUAL TO THE TOP CENTRE OF THE OBJECT YOU CLICK
+//            /// ////////////////////////////
+//            SpawnSideBasesOnBoard(5,0, 0, 0);
+//            playerTwoCurrentTechAmount++;
+//        }
+//    }
+    
+    /////////////////////////////////////
+    /// HOW TO BLOCK THIS BUTTON ONCE IT'S BEEN CLICKED (LOWER PRIORITY IF NOT QUICK FIX)
+    /// ////////////////////////////
+//    void SpawnBarracksBuildingCurrentPlayer()
+//    {
+//        //ifplayerone do index 3
+//        //else do index 5
+//        if (GameManager.instance.isPlayerOneTurn)
+//        {   
+//            /////////////////////////////////
+//            ///HOW TO MAKE THE POSITION EQUAL TO THE TOP CENTRE OF THE OBJECT YOU CLICK
+//            /// ////////////////////////////
+//            SpawnSideBasesOnBoard(2,0, 0, 0);
+//            
+//            playerOneCurrentArmySize++;
+//            
+//        }
+//        else
+//        {
+//            /////////////////////////////////
+//            ///HOW TO MAKE THE POSITION EQUAL TO THE TOP CENTRE OF THE OBJECT YOU CLICK
+//            /// ////////////////////////////
+//            SpawnSideBasesOnBoard(4,0, 0, 0);
+//            playerTwoCurrentArmySize++;
+//        }
+//    }
 
 
 

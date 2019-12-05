@@ -8,6 +8,9 @@ public class EndTurn : MonoBehaviour
     public int turnNumber = 1;
     public delegate void ButtonPush();
     public static ButtonPush OnButtonPush;
+
+    public delegate void ApplyDamage();
+    public static ApplyDamage OnApplyDamage;
     
     //end the turn and start the next players turn when you click the button to the side of the board
     private void OnMouseDown()
@@ -17,18 +20,27 @@ public class EndTurn : MonoBehaviour
         if (GameManager.instance.isPlayerOneTurn)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
-            //PlayerTwoDrawCard
-            OnButtonPush?.Invoke();
-            turnNumber++;
         }
         //if player two turn
         else
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            //PlayerOneDrawCard
-            OnButtonPush?.Invoke();
-            turnNumber++;
         }
         
+        OnButtonPush?.Invoke();
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(SendApplyDamage());
+        }
+
+        turnNumber++;
     }
+
+    IEnumerator SendApplyDamage()
+    {
+        yield return null;
+        OnApplyDamage?.Invoke();
+
+    }
+    
 }
