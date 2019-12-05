@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: Orc Berserker
   cardDescription: Frenzy
   cardType: C
-  goldCost: 5
-  techCost: 4
-  attack: 4
-  health: 5
+  artwork: {fileID: 21300000, guid: 6b6582f3ab956d744bf2327002b03700, type: 3}
+  goldCost: 3
+  techCost: 3
+  attack: 3
+  health: 3

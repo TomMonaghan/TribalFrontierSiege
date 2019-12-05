@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: Dwarven Fire Shaman
   cardDescription: 'Summon Effect: Deal 6 damage spread out over all enemy target'
   cardType: C
-  goldCost: 6
+  artwork: {fileID: 0}
+  goldCost: 3
   techCost: 3
   attack: 3
-  health: 4
+  health: 3

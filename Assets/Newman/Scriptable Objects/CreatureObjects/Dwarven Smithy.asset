@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: Dwarven Smithy
   cardDescription: 'End of turn: Heal your main base for 1 health'
   cardType: C
-  goldCost: 3
-  techCost: 1
-  attack: 1
-  health: 3
+  artwork: {fileID: 0}
+  goldCost: 4
+  techCost: 4
+  attack: 4
+  health: 4

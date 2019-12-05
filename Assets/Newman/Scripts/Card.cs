@@ -8,7 +8,7 @@ public class Card : ScriptableObject
     public string cardName;
     public string cardDescription;
     public string cardType;
-
+    public Sprite artwork;
     public int goldCost;
     public int techCost;
     public int attack;
@@ -23,7 +23,7 @@ public class SpellCard : ScriptableObject
     public string cardName;
     public string cardDescription;
     public string cardType;
-
+    public Sprite artwork;
     public int goldCost;
     public int techCost;
     

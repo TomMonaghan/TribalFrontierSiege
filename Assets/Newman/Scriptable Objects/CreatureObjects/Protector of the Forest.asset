@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: Protector of the Forest
   cardDescription: 
   cardType: C
+  artwork: {fileID: 21300000, guid: 02428a88a3d58a74d912f1606ae99a41, type: 3}
   goldCost: 8
   techCost: 5
   attack: 9

@@ -16,7 +16,8 @@ MonoBehaviour:
   cardDescription: 'Passive: Creatures have +1/+1     Summon Effect: On the turn Orc
     Leader Dakrakk is summoned, the controller gains an additional combat phase'
   cardType: C
-  goldCost: 8
-  techCost: 5
-  attack: 5
-  health: 5
+  artwork: {fileID: 0}
+  goldCost: 1
+  techCost: 1
+  attack: 50
+  health: 50

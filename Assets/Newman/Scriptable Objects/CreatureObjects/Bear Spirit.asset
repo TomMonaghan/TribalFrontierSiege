@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: Bear Spirit
   cardDescription: 'End of turn: Give a random friendly creature +1/+1'
   cardType: C
-  goldCost: 3
+  artwork: {fileID: 21300000, guid: 0c4dd779fb5f7da41b58ac6213c8a0a2, type: 3}
+  goldCost: 2
   techCost: 2
   attack: 2
   health: 2

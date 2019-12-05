@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
+//using UnityEngine.UI;
 public class CardDisplay : MonoBehaviour
 {
 
@@ -12,12 +14,11 @@ public class CardDisplay : MonoBehaviour
     public TextMeshPro cardNameText;
     public TextMeshPro cardDescriptionText;
     public TextMeshPro cardTypeText;
-
     public TextMeshPro goldCostText;
     public TextMeshPro techCostText;
     public TextMeshPro attackText;
     public TextMeshPro healthText;
-
+    public SpriteRenderer cardArt;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class CardDisplay : MonoBehaviour
         cardNameText.text = card.cardName;
         cardDescriptionText.text = card.cardDescription;
         cardTypeText.text = card.cardType;
-
+        cardArt.sprite = card.artwork;
         goldCostText.text = card.goldCost.ToString();
         techCostText.text = card.techCost.ToString();
         attackText.text = card.attack.ToString();
