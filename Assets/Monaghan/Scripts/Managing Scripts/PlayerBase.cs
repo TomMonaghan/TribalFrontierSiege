@@ -219,11 +219,19 @@ public abstract class PlayerBase : MonoBehaviour
                 CurrentPosition = transform.position;
                 
                 int layer = LayerMask.NameToLayer("Default");
-
+                
+                
+                
                 gameObject.layer = layer;
                 foreach (Transform child in transform)
                 {
+                    
                     child.gameObject.layer = layer;
+                    if (child.gameObject.name == "CardBack" )
+                    {
+                        
+                    }
+
                 }
                 
                 Debug.Log("[PlayerBase] card(" + gameObject.name + ") is being set to " + targetState );

@@ -23,6 +23,7 @@ public class BuildingManager : MonoBehaviour
     private GameObject currentlySpawnedBuilding;
 
     public TextMeshPro healthText;
+    public TextMeshPro healthText2;
     
     private void Start()
     {
@@ -64,6 +65,8 @@ public class BuildingManager : MonoBehaviour
             else
             {
                 healthText.text = currentBuildingHealth.ToString();
+                healthText2.text = currentBuildingHealth.ToString();
+                
             }
 
         }
@@ -79,6 +82,8 @@ public class BuildingManager : MonoBehaviour
         techButton.SetActive(toggle);
         barracksButton.SetActive(toggle);
         healthText.gameObject.SetActive(!toggle);
+        healthText2.gameObject.SetActive(!toggle);
+
     }
 
 
@@ -110,6 +115,7 @@ public class BuildingManager : MonoBehaviour
             ToggleButtons(false);
             buildingActive = true;
             healthText.text = currentBuildingHealth.ToString();
+            healthText2.text = currentBuildingHealth.ToString();
         }
         
 
@@ -142,6 +148,7 @@ public class BuildingManager : MonoBehaviour
             ToggleButtons(false);
             buildingActive = true;
             healthText.text = currentBuildingHealth.ToString();
+            healthText2.text = currentBuildingHealth.ToString();
 
         }
         

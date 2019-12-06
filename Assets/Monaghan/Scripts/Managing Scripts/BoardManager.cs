@@ -277,10 +277,14 @@ public class BoardManager : MonoBehaviour
         
         int layer = LayerMask.NameToLayer("PlayerOneOnly");
         go.layer = layer;
+        
         foreach (Transform child in go.transform)
         {
+            if (child.gameObject.name == "CardBack") continue;
             child.gameObject.layer = layer;
+            
         }
+        
         go.GetComponent<CardDisplay>().InitialiseCard();
     }
     
@@ -293,10 +297,14 @@ public class BoardManager : MonoBehaviour
         
         int layer = LayerMask.NameToLayer("PlayerTwoOnly");
         go.layer = layer;
+        
         foreach (Transform child in go.transform)
         {
+            if (child.gameObject.name == "CardBack") continue;
             child.gameObject.layer = layer;
+            
         }
+        
         go.GetComponent<CardDisplay>().InitialiseCard();
     }
     

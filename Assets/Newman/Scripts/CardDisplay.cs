@@ -9,8 +9,6 @@ public class CardDisplay : MonoBehaviour
 {
 
     public Card card;
-    
-
     public TextMeshPro cardNameText;
     public TextMeshPro cardDescriptionText;
     public TextMeshPro cardTypeText;

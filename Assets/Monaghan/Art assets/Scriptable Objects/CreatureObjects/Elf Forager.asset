@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e9b3288fb4bc0419c2914112639b0f, type: 3}
+  m_Name: Elf Forager
+  m_EditorClassIdentifier: 
+  cardName: Elven Forager
+  cardDescription: 'End of turn: Gain 1 gold'
+  cardType: Creature
+  artwork: {fileID: 21300000, guid: 64a0fba73be9fa343ad2850ccb284d51, type: 3}
+  goldCost: 3
+  techCost: 1
+  attack: 1
+  health: 1
