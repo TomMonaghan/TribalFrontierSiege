@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Goblin Assassin
   m_EditorClassIdentifier: 
   cardName: Goblin Assassin
-  cardDescription: 'Assassinate: When this creature kills and enemy creature, draw
-    a card'
+  cardDescription: '"I strike from the shadows"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: e12dbfc958493d642ace46d7a34df092, type: 3}
   goldCost: 3

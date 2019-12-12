@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Forgotten Golem
   m_EditorClassIdentifier: 
   cardName: Forgotten Golem
-  cardDescription: 
+  cardDescription: '"Nobody remembers a pile of rocks"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: 7fa14c8ac42c88a438a574ad67382819, type: 3}
-  goldCost: 3
+  goldCost: 2
   techCost: 2
-  attack: 3
-  health: 4
+  attack: 4
+  health: 6

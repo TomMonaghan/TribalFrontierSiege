@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bear Spirit
   m_EditorClassIdentifier: 
   cardName: Bear Spirit
-  cardDescription: Cannot be target by spells
+  cardDescription: '"Roarrrrr", but also "oooOOOooOOO"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: 0c4dd779fb5f7da41b58ac6213c8a0a2, type: 3}
   goldCost: 2
-  techCost: 2
-  attack: 3
+  techCost: 1
+  attack: 2
   health: 2

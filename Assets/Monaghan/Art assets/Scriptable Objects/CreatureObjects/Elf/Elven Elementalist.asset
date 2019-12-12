@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Elven Elementalist
   m_EditorClassIdentifier: 
   cardName: Elven Elementalist
-  cardDescription: 'Summon Effect: Summon a copy of this creature to any adjacent
-    battlefield'
+  cardDescription: '"Earth, wind, and fire, head my call"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: aea7ef3c695a14646a3e43c845a11bf5, type: 3}
   goldCost: 3
-  techCost: 3
+  techCost: 1
   attack: 3
-  health: 3
+  health: 4

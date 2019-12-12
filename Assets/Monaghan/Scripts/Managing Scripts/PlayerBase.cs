@@ -10,8 +10,8 @@ public abstract class PlayerBase : MonoBehaviour
     private Quaternion zoomedInOrientationPlayerOne = Quaternion.Euler(90, 0, 0);
     private Quaternion zoomedInOrientationPlayerTwo = Quaternion.Euler(90, 180, 0);
 
-    private Vector3 zoomedPositionPlayerOne = new Vector3(1.72f, 3.94f, 1.71f);
-    private Vector3 zoomedPositionPlayerTwo = new Vector3(4.27f, 3.94f, 2.3f);
+    private Vector3 zoomedPositionPlayerOne = new Vector3(1.77f, 3.94f, 1.71f);
+    private Vector3 zoomedPositionPlayerTwo = new Vector3(4.22f, 3.94f, 2.3f);
 
     public int CurrentX { set; get;}
     public int CurrentY { set; get;}
@@ -88,15 +88,19 @@ public abstract class PlayerBase : MonoBehaviour
                 cardClone = Instantiate(gameObject, zoomedPositionPlayerOne, zoomedInOrientationPlayerOne);
                 //so it didnt get stuck
                 Destroy(cardClone.GetComponent<CardDisplay>());
+                Destroy(cardClone.GetComponent<MasterCard>());
                 //GetComponent<Renderer>().material.SetColor("_Color", mouseOverColor);
             }
             else
             {
                 cardClone = Instantiate(gameObject, zoomedPositionPlayerTwo, zoomedInOrientationPlayerTwo);
                 //GetComponent<Renderer>().material.SetColor("_Color", mouseOverColor);
+                //so it didnt get stuck
+                Destroy(cardClone.GetComponent<CardDisplay>());
+                Destroy(cardClone.GetComponent<MasterCard>());
             }
             Debug.Log("hovered");
-
+        
         }
 
     }
@@ -136,63 +140,164 @@ public abstract class PlayerBase : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
+        if (GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
         {
-            transform.position = GetMouseWorldPos();
+            if ((isPlayerOneCard && !BoardManager.instance.playerOneHasMovedCard && cardState == CardState.InPlay) ||
+                (!isPlayerOneCard && !BoardManager.instance.playerTwoHasMovedCard && cardState == CardState.InPlay) ||
+                cardState == CardState.InHand)
+            {
+                transform.position = GetMouseWorldPos();
+            }
         }
         
     }
 
     private void OnMouseUp()
     {
-        //If the card you are clicking isn't a card from in your hand then run this 
-        if (cardState == CardState.InHand && GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
+        if (GameManager.instance.isPlayerOneTurn == isPlayerOneCard)
         {
-            if (isPlayerOneCard)
+            //If the card you are clicking isn't a card from in your hand then run this 
+            if (cardState == CardState.InHand)
             {
-                //If it's within player one combat zone then snap to the square you're in 
-                if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
-                    GetMouseWorldPos().z > 1 && GetMouseWorldPos().z < 2 &&
-                    BoardManager.instance.playerOneInPlay[(int) GetMouseWorldPos().x] == null)
+                if (isPlayerOneCard)
                 {
 
-                    transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
-                        (int) GetMouseWorldPos().z + 0.5f);
+                    //checking if we have the right resources
+                    if (ResourceManagerGold.instance.playerOneCurrentGold >= cardReference.goldCost &&
+                        ResourceManagerGold.instance.playerOneCurrentTechAmount >= cardReference.techCost &&
+                        ResourceManagerGold.instance.playerOneCurrentArmySize >
+                        BoardManager.instance.playerOneInPlayTotal)
+                    {
 
 
-                    BoardManager.instance.PlaceCardPlayerOne(gameObject, (int) GetMouseWorldPos().x);
+                        //If it's within player one combat zone then snap to the square you're in 
+                        if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
+                            GetMouseWorldPos().z > 1 && GetMouseWorldPos().z < 2 &&
+                            BoardManager.instance.playerOneInPlay[(int) GetMouseWorldPos().x] == null)
+                        {
 
-                    BoardManager.instance.RemoveFromHandPlayerOne(gameObject);
-                    SetCardState(CardState.InPlay);
+                            transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
+                                (int) GetMouseWorldPos().z + 0.5f);
+
+
+                            BoardManager.instance.PlaceCardPlayerOne(gameObject, (int) GetMouseWorldPos().x);
+                            BoardManager.instance.RemoveFromHandPlayerOne(gameObject);
+
+                            ResourceManagerGold.instance.MinusGold(cardReference.goldCost);
+
+
+                            SetCardState(CardState.InPlay);
+
+                        }
+                        //otherwise return card to spot it came from
+                        else
+                        {
+                            transform.position = CurrentPosition;
+                        }
+                    }
+                    //otherwise return card to spot it came from
+                    else
+                    {
+                        transform.position = CurrentPosition;
+                    }
 
                 }
-                //otherwise return card to spot it came from
                 else
                 {
-                    transform.position = CurrentPosition;
-                }
+                    //checking if we have the right resources
+                    if (ResourceManagerGold.instance.playerTwoCurrentGold >= cardReference.goldCost &&
+                        ResourceManagerGold.instance.playerTwoCurrentTechAmount >= cardReference.techCost &&
+                        ResourceManagerGold.instance.playerTwoCurrentArmySize >
+                        BoardManager.instance.playerTwoInPlayTotal)
+                    {
+                        //if player 2 and it's within player one combat zone then snap to the square you're in 
+                        if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
+                            GetMouseWorldPos().z > 2 && GetMouseWorldPos().z < 3 &&
+                            BoardManager.instance.playerTwoInPlay[(int) GetMouseWorldPos().x] == null)
+                        {
+                            transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
+                                (int) GetMouseWorldPos().z + 0.5f);
 
+                            BoardManager.instance.PlaceCardPlayerTwo(gameObject, (int) GetMouseWorldPos().x);
+                            BoardManager.instance.RemoveFromHandPlayerTwo(gameObject);
+
+                            ResourceManagerGold.instance.MinusGold(cardReference.goldCost);
+
+
+
+                            SetCardState(CardState.InPlay);
+                        }
+                        //otherwise return card to spot it came from
+                        else
+                        {
+                            transform.position = CurrentPosition;
+                        }
+                    }
+                    //otherwise return card to spot it came from
+                    else
+                    {
+                        transform.position = CurrentPosition;
+                    }
+                }
             }
-            else
+            else if (cardState == CardState.InPlay)
             {
-                //if player 2 and it's within player one combat zone then snap to the square you're in 
-                if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
-                    GetMouseWorldPos().z > 2 && GetMouseWorldPos().z < 3 &&
-                    BoardManager.instance.playerTwoInPlay[(int) GetMouseWorldPos().x] == null)
+                float tiledWorldPosX = (int) GetMouseWorldPos().x + 0.5f;
+                
+                if (isPlayerOneCard && !BoardManager.instance.playerOneHasMovedCard)
                 {
-                    transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
-                        (int) GetMouseWorldPos().z + 0.5f);
+                    //If it's within player one combat zone then snap to the square you're in 
+                    Debug.Log("CurrentPosition = " + CurrentPosition.x + ", WorldPos = " + tiledWorldPosX);
+                    if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
+                        tiledWorldPosX == CurrentPosition.x + 1 || tiledWorldPosX == CurrentPosition.x - 1  &&
+                        GetMouseWorldPos().z > 1 && GetMouseWorldPos().z < 2 &&
+                        BoardManager.instance.playerOneInPlay[(int) GetMouseWorldPos().x] == null)
+                    {
 
-                    BoardManager.instance.PlaceCardPlayerTwo(gameObject, (int) GetMouseWorldPos().x);
+                        transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
+                            (int) GetMouseWorldPos().z + 0.5f);
 
 
-                    BoardManager.instance.RemoveFromHandPlayerTwo(gameObject);
-                    SetCardState(CardState.InPlay);
+                        BoardManager.instance.PlaceCardPlayerOne(gameObject, (int) GetMouseWorldPos().x);
+                        BoardManager.instance.RemoveCardPlayerOne( (int) CurrentPosition.x);
+
+                        CurrentPosition = transform.position;
+
+                        BoardManager.instance.playerOneHasMovedCard = true;
+
+                    }
+                    //otherwise return card to spot it came from
+                    else
+                    {
+                        transform.position = CurrentPosition;
+                    }
                 }
-                //otherwise return card to spot it came from
-                else
+                else if (!isPlayerOneCard && !BoardManager.instance.playerTwoHasMovedCard)
                 {
-                    transform.position = CurrentPosition;
+                    //If it's within player one combat zone then snap to the square you're in 
+                    if (GetMouseWorldPos().x < tileColumnMax && GetMouseWorldPos().x > 0 &&
+                        tiledWorldPosX == CurrentPosition.x + 1 || tiledWorldPosX == CurrentPosition.x - 1  &&
+                        GetMouseWorldPos().z > 2 && GetMouseWorldPos().z < 3 &&
+                        BoardManager.instance.playerTwoInPlay[(int) GetMouseWorldPos().x] == null)
+                    {
+
+                        transform.position = new Vector3((int) GetMouseWorldPos().x + 0.5f, GetMouseWorldPos().y,
+                            (int) GetMouseWorldPos().z + 0.5f);
+
+
+                        BoardManager.instance.PlaceCardPlayerTwo(gameObject, (int) GetMouseWorldPos().x);
+                        BoardManager.instance.RemoveCardPlayerTwo( (int) CurrentPosition.x);
+
+                        CurrentPosition = transform.position;
+
+                        BoardManager.instance.playerTwoHasMovedCard = true;
+
+                    }
+                    //otherwise return card to spot it came from
+                    else
+                    {
+                        transform.position = CurrentPosition;
+                    }
                 }
             }
         }
@@ -302,6 +407,15 @@ public abstract class PlayerBase : MonoBehaviour
         {
             if (GetComponent<CardDisplay>().health <= 0)
             {
+                if (isPlayerOneCard)
+                {
+                    BoardManager.instance.playerOneInPlayTotal--;
+
+                }
+                else
+                {
+                    BoardManager.instance.playerTwoInPlayTotal--;
+                }
                 Destroy(gameObject);
                 //Remove from list
 

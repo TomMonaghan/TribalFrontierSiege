@@ -74,11 +74,17 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> playerTwoDeck;
     public List<GameObject> playerOneInPlay;
     public List<GameObject> playerTwoInPlay;
+    public int playerOneInPlayTotal;
+    public int playerTwoInPlayTotal;
     private List<GameObject> activeObject = new List<GameObject>();
     private List<GameObject> activeCard = new List<GameObject>();
 
     public MainBases PlayerOneBase;
     public MainBases PlayerTwoBase;
+
+    public bool playerOneHasMovedCard;
+    public bool playerTwoHasMovedCard;
+
 
     private void Start()
     {
@@ -379,10 +385,13 @@ public class BoardManager : MonoBehaviour
         if (GameManager.instance.isPlayerOneTurn)
         {
             PlayerOneDrawCard(1);
+            playerOneHasMovedCard = false;
         }
         else
         {
             PlayerTwoDrawCard(1);
+            playerTwoHasMovedCard = false;
+
         }
         
         
@@ -473,13 +482,31 @@ public class BoardManager : MonoBehaviour
     public void PlaceCardPlayerOne(GameObject card, int index)
     {
         playerOneInPlay[index] = card;
+        playerOneInPlayTotal++;
     }
     
     //Changes the null spot in play to the card that is placed in there
     public void PlaceCardPlayerTwo(GameObject card, int index)
     {
         playerTwoInPlay[index] = card;
+        playerTwoInPlayTotal++;
     }
+    
+    //Changes the null spot in play to the card that is placed in there
+    public void RemoveCardPlayerOne(int index)
+    {
+        playerOneInPlay[index] = null;
+        playerOneInPlayTotal--;
+    }
+    
+    //Changes the null spot in play to the card that is placed in there
+    public void RemoveCardPlayerTwo(int index)
+    {
+        playerTwoInPlay[index] = null;
+        playerTwoInPlayTotal--;
+    }
+    
+    
 
     //Removes the card that youre holding from the hand list while reducing hand size and bringing the cards in together
     public void RemoveFromHandPlayerOne(GameObject objectToRemove)

@@ -12,7 +12,7 @@ public class MainBases : MonoBehaviour
     public int currentBaseHealth;
 
     public TextMeshPro mainBaseHealthText;
-
+    public TextMeshPro mainBase2HealthText;
 
     void Start()
     {
@@ -30,8 +30,11 @@ public class MainBases : MonoBehaviour
                 
 
             }
+            
+            
 
             mainBaseHealthText.text = currentBaseHealth.ToString();
+            mainBase2HealthText.text = currentBaseHealth.ToString();
             //mainBaseHealthText.text = currentBaseHealth.ToString();
 
     }

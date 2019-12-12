@@ -32,7 +32,8 @@ public class EndTurn : MonoBehaviour
         {
             StartCoroutine(SendApplyDamage());
         }
-
+        
+        ResourceManagerGold.instance.AddGold(1);
         turnNumber++;
     }
 

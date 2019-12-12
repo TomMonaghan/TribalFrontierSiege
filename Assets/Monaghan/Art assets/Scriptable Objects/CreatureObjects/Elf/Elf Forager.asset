@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Elf Forager
   m_EditorClassIdentifier: 
   cardName: Elven Forager
-  cardDescription: 'End of turn: Gain 1 gold'
+  cardDescription: I'm not sure why I'm fighting, I only forage"
   cardType: Creature
   artwork: {fileID: 21300000, guid: 64a0fba73be9fa343ad2850ccb284d51, type: 3}
-  goldCost: 3
+  goldCost: 1
   techCost: 1
   attack: 1
   health: 1

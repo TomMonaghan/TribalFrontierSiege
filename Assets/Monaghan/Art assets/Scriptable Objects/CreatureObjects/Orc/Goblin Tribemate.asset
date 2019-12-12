@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Goblin Tribemate
   m_EditorClassIdentifier: 
   cardName: Goblin Tribemate
-  cardDescription: Quick
+  cardDescription: '"Wh-wh-who wants to go in first?"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: 20c9697640556c8459ddcdf7f9c0358f, type: 3}
   goldCost: 1
   techCost: 1
-  attack: 2
+  attack: 1
   health: 1

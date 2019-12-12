@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Orc Brawler
   m_EditorClassIdentifier: 
   cardName: Orc Brawler
-  cardDescription: 
+  cardDescription: '"Believe it or not, I love to brawl"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: fe92c39f8103ea14bb8152fe9042d755, type: 3}
   goldCost: 2
-  techCost: 1
-  attack: 2
-  health: 3
+  techCost: 2
+  attack: 6
+  health: 4

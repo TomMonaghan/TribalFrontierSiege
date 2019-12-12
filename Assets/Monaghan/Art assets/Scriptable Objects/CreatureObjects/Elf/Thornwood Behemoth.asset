@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Thornwood Behemoth
   m_EditorClassIdentifier: 
   cardName: Thornwood Behemoth
-  cardDescription: 'Multi-hitter/Crush: Get in an attack before the enemy and then
-    does another/ Deal spill over damage to the enemy base.'
+  cardDescription: '"You picking on my friends?" '
   cardType: Creature
   artwork: {fileID: 21300000, guid: 9b850363c6d104c4385654013fd8f317, type: 3}
   goldCost: 4
-  techCost: 4
-  attack: 6
-  health: 6
+  techCost: 3
+  attack: 7
+  health: 9

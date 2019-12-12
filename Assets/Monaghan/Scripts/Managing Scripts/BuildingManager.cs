@@ -14,6 +14,8 @@ public class BuildingManager : MonoBehaviour
     public GameObject techPrefab;
     public GameObject barracksPrefab;
 
+    public int techBuildingCost = 4;
+    public int barracksBuildingCost = 3;
     
     public int startingBuildingHealth;
     public int currentBuildingHealth;
@@ -92,21 +94,16 @@ public class BuildingManager : MonoBehaviour
 
 
         // Check if this button is owned by this player
-        if (GameManager.instance.isPlayerOneTurn == isPlayerOneBuilding)
+        if (GameManager.instance.isPlayerOneTurn == isPlayerOneBuilding && ResourceManagerGold.instance.CurrentPlayerGold >= techBuildingCost)
         {   
             // Spawn the building graphic in my position / rotation
             currentlySpawnedBuilding = Instantiate(techPrefab, transform.position, transform.rotation) as GameObject;
             currentlySpawnedBuilding.transform.SetParent(transform);
             
             // Add 1 to the tech amount of this player
-            if (isPlayerOneBuilding)
-            {
-                BoardManager.instance.playerOneCurrentTechAmount++;
-            }
-            else
-            {
-                BoardManager.instance.playerTwoCurrentTechAmount++;
-            }
+            ResourceManagerGold.instance.AddTech(1);
+            ResourceManagerGold.instance.MinusGold(techBuildingCost);
+
             
             // Set building health
             currentBuildingHealth = startingBuildingHealth;
@@ -125,21 +122,15 @@ public class BuildingManager : MonoBehaviour
     {
 
      // Check if this button is owned by this player
-        if (GameManager.instance.isPlayerOneTurn == isPlayerOneBuilding)
+        if (GameManager.instance.isPlayerOneTurn == isPlayerOneBuilding && ResourceManagerGold.instance.CurrentPlayerGold >= barracksBuildingCost)
         {   
             // Spawn the building graphic in my position / rotation
             currentlySpawnedBuilding = Instantiate(barracksPrefab, transform.position, transform.rotation) as GameObject;
             currentlySpawnedBuilding.transform.SetParent(transform);
             
             // Add 1 to the army size of this player
-            if (isPlayerOneBuilding)
-            {
-                BoardManager.instance.playerOneCurrentArmySize++;
-            }
-            else
-            {
-                BoardManager.instance.playerTwoCurrentArmySize++;
-            }
+            ResourceManagerGold.instance.AddArmySize(1);
+            ResourceManagerGold.instance.MinusGold(barracksBuildingCost);
             
             // Set building health
             currentBuildingHealth = startingBuildingHealth;
@@ -164,14 +155,8 @@ public class BuildingManager : MonoBehaviour
         Destroy(currentlySpawnedBuilding);
         
         // Minus 1 from the tech amount of this player
-        if (isPlayerOneBuilding)
-        {
-            BoardManager.instance.playerOneCurrentTechAmount--;
-        }
-        else
-        {
-            BoardManager.instance.playerTwoCurrentTechAmount--;
-        }
+        ResourceManagerGold.instance.MinusTech(1);
+
         
         // Disable buttons and log that there is now a building
         ToggleButtons(true);
@@ -186,14 +171,8 @@ public class BuildingManager : MonoBehaviour
         Destroy(currentlySpawnedBuilding);
         
         // Minus 1 from the army size of this player
-        if (isPlayerOneBuilding)
-        {
-            BoardManager.instance.playerOneCurrentArmySize--;
-        }
-        else
-        {
-            BoardManager.instance.playerTwoCurrentArmySize--;
-        }
+        ResourceManagerGold.instance.MinusArmySize(1);
+
             
         // Disable buttons and log that there is now a building
         ToggleButtons(true);

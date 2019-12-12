@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Thorn Wall
   m_EditorClassIdentifier: 
   cardName: Thorn Wall
-  cardDescription: 'Defender/Barbed: Blocks 3 in front of it/ Creatures hitting this
-    take 1 damage '
+  cardDescription: Spiky hazard, don't run into
   cardType: Creature
   artwork: {fileID: 21300000, guid: 490556ab6f68037499064c89e6bbbad6, type: 3}
   goldCost: 2
   techCost: 2
-  attack: 0
-  health: 4
+  attack: 1
+  health: 9

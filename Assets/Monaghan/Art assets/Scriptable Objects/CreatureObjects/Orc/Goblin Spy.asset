@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Goblin Spy
   m_EditorClassIdentifier: 
   cardName: Goblin Spy
-  cardDescription: 'Incognito: Hits base instead of creatures'
+  cardDescription: '"Lovely day to be a human isn''t it?"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: cb6c70a3d663dc04dbb6aca23c76d0a0, type: 3}
   goldCost: 2
   techCost: 1
   attack: 2
-  health: 1
+  health: 2

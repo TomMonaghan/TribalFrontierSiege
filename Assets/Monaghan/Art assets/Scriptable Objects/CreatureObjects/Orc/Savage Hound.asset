@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Savage Hound
   m_EditorClassIdentifier: 
   cardName: Savage Hound
-  cardDescription: 
+  cardDescription: '*Howl*'
   cardType: 
   artwork: {fileID: 21300000, guid: 95f1cbaf58167434293ffa5837a3fffa, type: 3}
   goldCost: 2

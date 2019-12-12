@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Protector of the Forest
   m_EditorClassIdentifier: 
   cardName: Protector of the Forest
-  cardDescription: 'Defender: Blocks multiple lanes'
+  cardDescription: '"I am one with the trees... because I am a tree"'
   cardType: Creature
   artwork: {fileID: 21300000, guid: d2cbf1bb29acc58498771a34afaf4aea, type: 3}
-  goldCost: 4
-  techCost: 3
+  goldCost: 2
+  techCost: 2
   attack: 4
-  health: 5
+  health: 7
